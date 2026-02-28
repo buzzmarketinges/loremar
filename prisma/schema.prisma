@@ -1,0 +1,62 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model User {
+  id           String   @id @default(uuid())
+  username     String   @unique
+  passwordHash String
+  role         String   @default("admin")
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Menu {
+  id             String      @id @default(uuid())
+  name           String
+  type           String      // "MENU" | "CARTA" | "VINO"
+  price          String?
+  slug           String?     @unique
+  seoTitle       String?
+  seoDescription String?
+  order          Int         @default(0)
+  mainImage      String?
+  blocks         MenuBlock[]
+  createdAt      DateTime    @default(now())
+  updatedAt      DateTime    @updatedAt
+}
+
+model MenuBlock {
+  id        String   @id @default(uuid())
+  menuId    String
+  menu      Menu     @relation(fields: [menuId], references: [id], onDelete: Cascade)
+  order     Int
+  type      String   // "HEADER" | "PARAGRAPH" | "DISH"
+  content   String   // JSON stringified content
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Dish {
+  id          String   @id @default(uuid())
+  name        String   @unique
+  description String?
+  price       String?
+  allergens   String?  // JSON stringified array or comma separated
+  imageUrl    String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Image {
+  id             String   @id @default(uuid())
+  url            String
+  linkedDishName String?
+  isFavorite     Boolean  @default(false)
+  createdAt      DateTime @default(now())
+}

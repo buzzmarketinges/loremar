@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        /* Configuración de página para PDF */
+        @page {
+            size: A4;
+            margin: 0;
+        }
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: #ffffff;
+            color: #2c3e50;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        /* Contenedor principal */
+        .menu-card {
+            width: 80%;
+            max-width: 650px;
+            border: 1px solid #e0e0e0;
+            padding: 60px;
+            text-align: center;
+            position: relative;
+            background: #fff;
+            /* Un sutil borde doble decorativo */
+            outline: 15px solid #fff;
+            box-shadow: 0 0 0 2px #d4af37; 
+        }
+        .header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            color: #b8860b;
+            margin-bottom: 5px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .header p {
+            font-style: italic;
+            font-family: 'Playfair Display', serif;
+            color: #7f8c8d;
+            margin-bottom: 40px;
+        }
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #2c3e50;
+            margin-top: 35px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        /* Líneas decorativas a los lados de los títulos */
+        .section-title::before, .section-title::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: #d4af37;
+            margin: 0 15px;
+            max-width: 40px;
+        }
+        .item-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .item-list li {
+            font-size: 18px;
+            margin: 8px 0;
+            font-weight: 300;
+        }
+        .footer {
+            margin-top: 50px;
+            font-size: 12px;
+            color: #bdc3c7;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+        .gold-leaf {
+            color: #d4af37;
+            font-size: 24px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="menu-card">
+        <div class="header">
+            <h1>Menú del Día</h1>
+            <p>Experiencia Gastronómica</p>
+        </div>
+
+        <div class="gold-leaf">❦</div>
+
+        <div class="section">
+            <div class="section-title">Primeros</div>
+            <ul class="item-list">
+                <li>Ensalada Cesar Crujiente</li>
+                <li>Pimientos del Piquillo Rellenos</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Segundos</div>
+            <ul class="item-list">
+                <li>Carne a la Brasa con Guarnición</li>
+                <li>Salmón al Horno con Hierbas</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Postres</div>
+            <ul class="item-list">
+                <li>Torta Artesanal de la Casa</li>
+                <li>Fruta de Temporada</li>
+            </ul>
+        </div>
+
+        <div class="footer">
+            <p>Servicio de mediodía &nbsp; | &nbsp; 2026</p>
+        </div>
+    </div>
+
+</body>
+</html>
