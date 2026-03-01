@@ -1,8 +1,19 @@
 import Link from "next/link";
-import { LogOut } from "lucide-react";
 import LogoutButton from "./LogoutButton";
+import { getServerSession } from "next-auth/next";
+import { authOptions } from "@/lib/auth";
 
-export default function AdminLayout({ children }: { children: React.ReactNode }) {
+export default async function AdminLayout({ children }: { children: React.ReactNode }) {
+    const session = await getServerSession(authOptions);
+
+    if (!session) {
+        return (
+            <div style={{ minHeight: "100vh", backgroundColor: "var(--background)", display: "flex", justifyContent: "center", alignItems: "center" }}>
+                {children}
+            </div>
+        );
+    }
+
     return (
         <div style={{ display: "flex", minHeight: "100vh", backgroundColor: "var(--background)" }}>
             {/* Sidebar Navigation */}
