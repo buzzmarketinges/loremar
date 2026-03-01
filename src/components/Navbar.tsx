@@ -112,6 +112,7 @@ export default function Navbar({ centerContent }: NavbarProps) {
                     padding: "10px"
                 }}
                 className="mobile-toggle"
+                aria-label={isOpen ? "Cerrar menú" : "Abrir menú"}
             >
                 {isOpen ? <X size={30} /> : <Menu size={30} />}
             </button>

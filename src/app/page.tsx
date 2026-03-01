@@ -2,6 +2,7 @@ export const dynamic = "force-dynamic";
 
 import prisma from "@/lib/prisma";
 import Link from "next/link";
+import Image from "next/image";
 import { ChevronDown, MapPin, Phone, Instagram, Facebook, Clock, Globe } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import GalleryItem from "@/components/GalleryItem";
@@ -56,12 +57,13 @@ export default async function Home() {
           zIndex: 0,
           overflow: "hidden"
         }}>
-          <img
+          <Image
             src="/assets/restaurante-loremar-sabadell.webp"
             alt="Hero Background"
+            fill
+            priority
+            sizes="100vw"
             style={{
-              width: "100%",
-              height: "100%",
               objectFit: "cover",
               filter: "brightness(0.9) contrast(1.1)",
               opacity: 0.8
@@ -224,12 +226,12 @@ export default async function Home() {
           zIndex: 0,
           overflow: "hidden"
         }}>
-          <img
+          <Image
             src="/assets/restaurante-sabadell.webp"
             alt="Experience Background"
+            fill
+            sizes="100vw"
             style={{
-              width: "100%",
-              height: "100%",
               objectFit: "cover",
               filter: "blur(3px) brightness(0.6)",
               transform: "scale(1.05)"
@@ -295,10 +297,10 @@ export default async function Home() {
               Su marisquería y arrocería de confianza en el corazón de Sabadell. Marisco fresco directo de lonja y un servicio profesional que marca la diferencia.
             </p>
             <div style={{ display: "flex", gap: "1rem" }}>
-              <a href="https://www.instagram.com/restaurantloremar/" target="_blank" rel="noopener noreferrer" style={{ color: "var(--gold)", transition: "opacity 0.3s" }} className="hover-opacity">
+              <a href="https://www.instagram.com/restaurantloremar/" target="_blank" rel="noopener noreferrer" style={{ color: "var(--gold)", transition: "opacity 0.3s" }} className="hover-opacity" aria-label="Instagram">
                 <Instagram />
               </a>
-              <a href="https://www.facebook.com/RestaurantLoremar/" target="_blank" rel="noopener noreferrer" style={{ color: "var(--gold)", transition: "opacity 0.3s" }} className="hover-opacity">
+              <a href="https://www.facebook.com/RestaurantLoremar/" target="_blank" rel="noopener noreferrer" style={{ color: "var(--gold)", transition: "opacity 0.3s" }} className="hover-opacity" aria-label="Facebook">
                 <Facebook />
               </a>
             </div>
