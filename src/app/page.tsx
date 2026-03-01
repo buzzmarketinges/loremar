@@ -75,7 +75,7 @@ export default async function Home() {
         </div>
 
         <div className="fade-in" style={{ maxWidth: "900px", padding: "0 2rem", position: "relative", zIndex: 1 }}>
-          <h1 style={{
+          <h1 className="hero-subtitle" style={{
             color: "var(--gold)",
             letterSpacing: "6px",
             textTransform: "uppercase",
@@ -324,7 +324,7 @@ export default async function Home() {
             </div>
           </div>
         </div>
-        <div style={{ marginTop: "8rem", textAlign: "center", borderTop: "1px solid #111", paddingTop: "2rem", color: "#777", fontSize: "0.8rem", display: "flex", flexDirection: "column", gap: "1rem" }}>
+        <div className="footer-copyright" style={{ marginTop: "8rem", textAlign: "center", borderTop: "1px solid #111", paddingTop: "2rem", color: "#777", fontSize: "0.8rem", display: "flex", flexDirection: "column", gap: "1rem" }}>
           <div>© 2026 Restaurante Loremar. Tradición y Excelencia.</div>
           <div style={{ fontSize: "0.75rem" }}>
             Web desarrollada por la <a href="https://buzzmarketing.es" target="_blank" rel="noopener noreferrer" style={{ color: "inherit", textDecoration: "underline" }}>agencia de marketing de Sabadell BuzzMarketing</a>
@@ -363,14 +363,23 @@ export default async function Home() {
             width: 100% !important;
             max-width: 300px !important;
           }
-          h1 {
-            font-size: 3rem !important;
+          .hero-subtitle {
+            font-size: 0.75rem !important;
+            letter-spacing: 3px !important;
+            line-height: 1.5;
+            padding: 0 10px;
           }
           h2 {
             font-size: 2.2rem !important;
           }
           header h2, #cartas h2, #galeria h2 {
             font-size: 2.5rem !important;
+          }
+          footer[id="ubicacion"] {
+            padding: 4rem 5% 2rem 5% !important;
+          }
+          .footer-copyright {
+            margin-top: 3rem !important;
           }
           footer > div {
             grid-template-columns: 1fr !important;
