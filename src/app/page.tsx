@@ -57,7 +57,7 @@ export default async function Home() {
           overflow: "hidden"
         }}>
           <img
-            src="/uploads/restaurante-loremar-sabadell.webp"
+            src="/assets/restaurante-loremar-sabadell.webp"
             alt="Hero Background"
             style={{
               width: "100%",
@@ -225,7 +225,7 @@ export default async function Home() {
           overflow: "hidden"
         }}>
           <img
-            src="/uploads/restaurante-sabadell.webp"
+            src="/assets/restaurante-sabadell.webp"
             alt="Experience Background"
             style={{
               width: "100%",
