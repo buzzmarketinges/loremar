@@ -290,7 +290,7 @@ export default async function Home() {
 
       {/* Footer / Contacto */}
       <footer id="ubicacion" style={{ padding: "8rem 5% 4rem 5%", backgroundColor: "#000", borderTop: "1px solid #111" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))", gap: "4rem", maxWidth: "1200px", margin: "0 auto" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr", gap: "4rem", maxWidth: "1200px", margin: "0 auto" }}>
           <div>
             <h3 style={{ fontSize: "2rem", marginBottom: "2rem" }}>Loremar</h3>
             <div style={{ marginBottom: "2rem", width: "100%", overflow: "hidden", borderRadius: "8px" }}>
@@ -305,19 +305,21 @@ export default async function Home() {
               </a>
             </div>
           </div>
-          <div>
-            <h4 style={{ color: "#fff", marginBottom: "1.5rem", textTransform: "uppercase", fontSize: "0.9rem", letterSpacing: "2px" }}>Contacto</h4>
-            <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem", color: "#777", fontSize: "0.9rem" }}>
-              <div style={{ display: "flex", gap: "1rem" }}><MapPin size={18} color="var(--gold)" /> <a href="https://goo.gl/maps/carrer-lluis-carreras-13-sabadell" target="_blank" rel="noopener noreferrer" style={{ color: "inherit", textDecoration: "none" }}>Carrer de Lluís Carreras, 13, 17, 08208 Sabadell</a></div>
-              <div style={{ display: "flex", gap: "1rem" }}><Phone size={18} color="var(--gold)" /> <a href="tel:937179146" style={{ color: "inherit", textDecoration: "none" }}>937 17 91 46</a></div>
-              <div style={{ display: "flex", gap: "1rem" }}><Globe size={18} color="var(--gold)" /> <a href="https://restaurantloremar.com" style={{ color: "inherit", textDecoration: "none" }}>restaurantloremar.com</a></div>
+          <div style={{ display: "flex", flexDirection: "column", gap: "3rem" }}>
+            <div>
+              <h4 style={{ color: "#fff", marginBottom: "1.5rem", textTransform: "uppercase", fontSize: "0.9rem", letterSpacing: "2px" }}>Contacto</h4>
+              <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem", color: "#777", fontSize: "0.9rem" }}>
+                <div style={{ display: "flex", gap: "1rem" }}><MapPin size={18} color="var(--gold)" /> <a href="https://goo.gl/maps/carrer-lluis-carreras-13-sabadell" target="_blank" rel="noopener noreferrer" style={{ color: "inherit", textDecoration: "none" }}>Carrer de Lluís Carreras, 13, 17, 08208 Sabadell</a></div>
+                <div style={{ display: "flex", gap: "1rem" }}><Phone size={18} color="var(--gold)" /> <a href="tel:937179146" style={{ color: "inherit", textDecoration: "none" }}>937 17 91 46</a></div>
+                <div style={{ display: "flex", gap: "1rem" }}><Globe size={18} color="var(--gold)" /> <a href="https://restaurantloremar.com" style={{ color: "inherit", textDecoration: "none" }}>restaurantloremar.com</a></div>
+              </div>
             </div>
-          </div>
-          <div>
-            <h4 style={{ color: "#fff", marginBottom: "1.5rem", textTransform: "uppercase", fontSize: "0.9rem", letterSpacing: "2px" }}>Horarios</h4>
-            <div style={{ display: "flex", flexDirection: "column", gap: "0.8rem", color: "#777", fontSize: "0.85rem" }}>
-              <div style={{ display: "flex", justifyContent: "space-between" }}><span>De lunes a sábado</span> <span>13:00 - 16:00 | 20:00 - 00:00</span></div>
-              <div style={{ display: "flex", justifyContent: "space-between" }}><span>Domingo</span> <span>13:00 - 16:00 | Cena Cerrado</span></div>
+            <div>
+              <h4 style={{ color: "#fff", marginBottom: "1.5rem", textTransform: "uppercase", fontSize: "0.9rem", letterSpacing: "2px" }}>Horarios</h4>
+              <div style={{ display: "flex", flexDirection: "column", gap: "0.8rem", color: "#777", fontSize: "0.85rem" }}>
+                <div style={{ display: "flex", justifyContent: "space-between" }}><span>De lunes a sábado</span> <span>13:00 - 16:00 | 20:00 - 00:00</span></div>
+                <div style={{ display: "flex", justifyContent: "space-between" }}><span>Domingo</span> <span>13:00 - 16:00 | Cena Cerrado</span></div>
+              </div>
             </div>
           </div>
         </div>
