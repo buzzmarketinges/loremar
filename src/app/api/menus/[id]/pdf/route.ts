@@ -14,7 +14,6 @@ import {
     renderToBuffer,
 } from "@react-pdf/renderer";
 
-// Usamos fuentes estándar de PDF (sin descarga externa)
 const styles = StyleSheet.create({
     page: {
         backgroundColor: "#ffffff",
@@ -31,7 +30,15 @@ const styles = StyleSheet.create({
     },
     header: {
         alignItems: "center",
-        marginBottom: 20,
+        marginBottom: 16,
+    },
+    menuDay: {
+        fontFamily: "Times-Italic",
+        fontSize: 13,
+        color: "#888",
+        textAlign: "center",
+        marginBottom: 4,
+        letterSpacing: 1,
     },
     title: {
         fontFamily: "Times-Bold",
@@ -41,6 +48,14 @@ const styles = StyleSheet.create({
         textAlign: "center",
         marginBottom: 6,
     },
+    // Precio del menú grande y prominente
+    menuPrice: {
+        fontFamily: "Times-Italic",
+        fontSize: 24,
+        color: "#b8860b",
+        textAlign: "center",
+        marginTop: 4,
+    },
     subtitle: {
         fontFamily: "Times-Italic",
         fontSize: 14,
@@ -48,7 +63,7 @@ const styles = StyleSheet.create({
         textAlign: "center",
     },
     ornament: {
-        fontSize: 18,
+        fontSize: 16,
         color: "#d4af37",
         textAlign: "center",
         marginVertical: 12,
@@ -123,10 +138,7 @@ const styles = StyleSheet.create({
 
 function MenuDocument({ menu }: { menu: any }) {
     const year = new Date().getFullYear();
-    const priceLabel =
-        menu.type === "MENU" && menu.price
-            ? `${menu.price}€`
-            : "Experiencia Gastronómica";
+    const isMenuType = menu.type === "MENU";
 
     const blocks = menu.blocks.map((block: any, i: number) => {
         const content = JSON.parse(block.content);
@@ -140,6 +152,8 @@ function MenuDocument({ menu }: { menu: any }) {
         } else if (block.type === "PARAGRAPH") {
             return React.createElement(Text, { key: i, style: styles.paragraph }, content.text);
         } else if (block.type === "DISH") {
+            // Para tipo MENU no mostramos precio por plato
+            const showDishPrice = !isMenuType && content.price;
             return React.createElement(
                 View,
                 { key: i, style: styles.dishItem },
@@ -147,7 +161,7 @@ function MenuDocument({ menu }: { menu: any }) {
                     View,
                     { style: styles.dishRow },
                     React.createElement(Text, { style: styles.dishName }, content.name),
-                    content.price
+                    showDishPrice
                         ? React.createElement(Text, { style: styles.dishPrice }, `${content.price}€`)
                         : null
                 ),
@@ -168,14 +182,23 @@ function MenuDocument({ menu }: { menu: any }) {
             React.createElement(
                 View,
                 { style: styles.card },
+                // Header
                 React.createElement(
                     View,
                     { style: styles.header },
+                    // Día del menú (si está configurado)
+                    menu.menuDay
+                        ? React.createElement(Text, { style: styles.menuDay }, menu.menuDay)
+                        : null,
                     React.createElement(Text, { style: styles.title }, menu.name.toUpperCase()),
-                    React.createElement(Text, { style: styles.subtitle }, priceLabel)
+                    // Precio del menú (grande) o subtítulo
+                    isMenuType && menu.price
+                        ? React.createElement(Text, { style: styles.menuPrice }, `${menu.price}€`)
+                        : React.createElement(Text, { style: styles.subtitle }, "Experiencia Gastronómica")
                 ),
                 React.createElement(Text, { style: styles.ornament }, "~ ~ ~"),
                 ...blocks,
+                // Footer
                 React.createElement(
                     View,
                     { style: styles.footer },

@@ -26,6 +26,7 @@ model Menu {
   seoDescription String?
   order          Int         @default(0)
   mainImage      String?
+  menuDay        String?     // Ej: "Martes 5 de marzo" — solo para tipo MENU
   blocks         MenuBlock[]
   createdAt      DateTime    @default(now())
   updatedAt      DateTime    @updatedAt

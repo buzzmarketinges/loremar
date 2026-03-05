@@ -33,6 +33,7 @@ export default function NewMenuPage() {
     const [seoDescription, setSeoDescription] = useState("");
     const [order, setOrder] = useState("0");
     const [mainImage, setMainImage] = useState("");
+    const [menuDay, setMenuDay] = useState("");
     const [saving, setSaving] = useState(false);
 
     const generateSlug = (text: string) => {
@@ -92,7 +93,8 @@ export default function NewMenuPage() {
                     seoTitle: seoTitle || undefined,
                     seoDescription: seoDescription || undefined,
                     order,
-                    mainImage
+                    mainImage,
+                    menuDay: menuDay || undefined
                 }),
             });
 
@@ -144,6 +146,18 @@ export default function NewMenuPage() {
                                         onChange={e => setPrice(e.target.value)}
                                         placeholder="Ej: 14,50€"
                                         style={{ width: "100%", padding: "0.8rem", borderRadius: "4px", backgroundColor: "var(--background)", border: "1px solid var(--border)", color: "var(--foreground)" }}
+                                    />
+                                </div>
+                            ) : <div></div>}
+                            {menuType === "MENU" ? (
+                                <div>
+                                    <label style={{ display: "block", color: "var(--gold)", marginBottom: "0.5rem" }}>Día del menú</label>
+                                    <input
+                                        type="text"
+                                        value={menuDay}
+                                        onChange={e => setMenuDay(e.target.value)}
+                                        style={{ width: "100%", padding: "0.8rem", borderRadius: "4px", backgroundColor: "var(--background)", border: "1px solid var(--border)", color: "var(--foreground)" }}
+                                        placeholder="Ej: Lunes 4 de marzo"
                                     />
                                 </div>
                             ) : <div></div>}

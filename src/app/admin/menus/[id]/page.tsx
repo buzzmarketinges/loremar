@@ -4,6 +4,7 @@ import { useState, useEffect, use } from "react";
 import { useRouter } from "next/navigation";
 import DishSearch from "../DishSearch";
 import ImageUploader from "../../components/ImageUploader";
+import html2canvas from "html2canvas";
 
 type BlockType = "HEADER" | "PARAGRAPH" | "DISH";
 
@@ -32,11 +33,13 @@ export default function EditMenuPage({ params }: { params: Promise<{ id: string 
     const [slug, setSlug] = useState("");
     const [seoTitle, setSeoTitle] = useState("");
     const [seoDescription, setSeoDescription] = useState("");
+    const [menuDay, setMenuDay] = useState("");
     const [order, setOrder] = useState("0");
     const [mainImage, setMainImage] = useState("");
     const [loading, setLoading] = useState(true);
     const [saving, setSaving] = useState(false);
     const [pdfLoading, setPdfLoading] = useState(false);
+    const [imgLoading, setImgLoading] = useState(false);
 
     const generateSlug = (text: string) => {
         return text
@@ -66,6 +69,7 @@ export default function EditMenuPage({ params }: { params: Promise<{ id: string 
                 setSeoDescription(data.seoDescription || "");
                 setOrder(data.order?.toString() || "0");
                 setMainImage(data.mainImage || "");
+                setMenuDay(data.menuDay || "");
                 setBlocks(data.blocks.map((b: any) => ({
                     id: b.id,
                     type: b.type as BlockType,
@@ -119,7 +123,8 @@ export default function EditMenuPage({ params }: { params: Promise<{ id: string 
                     seoTitle: seoTitle || undefined,
                     seoDescription: seoDescription || undefined,
                     order,
-                    mainImage
+                    mainImage,
+                    menuDay: menuDay || undefined
                 }),
             });
 
@@ -174,6 +179,30 @@ export default function EditMenuPage({ params }: { params: Promise<{ id: string 
         }
     };
 
+    const handleDownloadImg = async () => {
+        setImgLoading(true);
+        try {
+            const previewElement = document.getElementById("menu-preview-hidden");
+            if (previewElement) {
+                previewElement.style.display = "block"; // Show temporarily
+                const canvas = await html2canvas(previewElement, { scale: 2, useCORS: true });
+                previewElement.style.display = "none"; // Hide again
+                const dataUrl = canvas.toDataURL("image/jpeg", 0.9);
+                const a = document.createElement("a");
+                a.href = dataUrl;
+                a.download = `${name.replace(/\\s+/g, "_")}.jpg`;
+                document.body.appendChild(a);
+                a.click();
+                a.remove();
+            }
+        } catch (error) {
+            console.error(error);
+            alert("Error al generar la imagen");
+        } finally {
+            setImgLoading(false);
+        }
+    };
+
     if (loading) return <div style={{ padding: "2rem", color: "var(--gold)" }}>Cargando menú...</div>;
 
     return (
@@ -195,7 +224,18 @@ export default function EditMenuPage({ params }: { params: Promise<{ id: string 
                     >
                         {pdfLoading ? "Generando PDF..." : "Generar PDF"}
                     </button>
-                    <button onClick={handleDelete} style={{ color: "#ff4444", border: "1px solid #ff4444", padding: "0.5rem 1rem", borderRadius: "4px", background: "none", cursor: "pointer" }}>Eliminar Menú</button>
+                    <button
+                        type="button"
+                        onClick={handleDownloadImg}
+                        disabled={imgLoading}
+                        style={{
+                            color: "var(--gold)", border: "1px solid var(--gold)", padding: "0.5rem 1rem",
+                            borderRadius: "4px", background: "rgba(212, 175, 55, 0.1)", cursor: imgLoading ? "not-allowed" : "pointer"
+                        }}
+                    >
+                        {imgLoading ? "Generando JPG..." : "Generar Imagen"}
+                    </button>
+                    <button type="button" onClick={handleDelete} style={{ color: "#ff4444", border: "1px solid #ff4444", padding: "0.5rem 1rem", borderRadius: "4px", background: "none", cursor: "pointer" }}>Eliminar Menú</button>
                 </div>
             </div>
 
@@ -227,6 +267,18 @@ export default function EditMenuPage({ params }: { params: Promise<{ id: string 
                                         onChange={e => setPrice(e.target.value)}
                                         style={{ width: "100%", padding: "0.8rem", borderRadius: "4px", backgroundColor: "var(--background)", border: "1px solid var(--border)", color: "var(--foreground)" }}
                                         placeholder="Ej: 14,50€"
+                                    />
+                                </div>
+                            ) : <div></div>}
+                            {menuType === "MENU" ? (
+                                <div>
+                                    <label style={{ display: "block", color: "var(--gold)", marginBottom: "0.5rem" }}>Día del menú</label>
+                                    <input
+                                        type="text"
+                                        value={menuDay}
+                                        onChange={e => setMenuDay(e.target.value)}
+                                        style={{ width: "100%", padding: "0.8rem", borderRadius: "4px", backgroundColor: "var(--background)", border: "1px solid var(--border)", color: "var(--foreground)" }}
+                                        placeholder="Ej: Lunes 4 de marzo"
                                     />
                                 </div>
                             ) : <div></div>}
@@ -443,6 +495,62 @@ export default function EditMenuPage({ params }: { params: Promise<{ id: string 
           background-color: rgba(212, 175, 55, 0.1); border-style: solid;
         }
       `}} />
+
+            {/* Hidden Preview for Image Generation */}
+            <div id="menu-preview-hidden" style={{
+                display: "none",
+                position: "absolute",
+                top: "-9999px",
+                left: "-9999px",
+                width: "794px", // A4 Width
+                backgroundColor: "#fff",
+                padding: "50px",
+                color: "#2c3e50",
+                fontFamily: "Times New Roman, serif",
+                boxSizing: "border-box"
+            }}>
+                <div style={{ border: "2px solid #d4af37", padding: "40px", minHeight: "1043px" }}>
+                    <div style={{ textAlign: "center", marginBottom: "16px" }}>
+                        {menuDay && <div style={{ fontSize: "14px", color: "#888", fontStyle: "italic", marginBottom: "5px", letterSpacing: "1px" }}>{menuDay}</div>}
+                        <div style={{ fontSize: "32px", color: "#b8860b", fontWeight: "bold", letterSpacing: "2px", textTransform: "uppercase" }}>{name}</div>
+                        {menuType === "MENU" && price ? (
+                            <div style={{ fontSize: "24px", color: "#b8860b", fontStyle: "italic", marginTop: "5px" }}>{price}€</div>
+                        ) : (
+                            <div style={{ fontSize: "16px", color: "#7f8c8d", fontStyle: "italic", marginTop: "5px" }}>Experiencia Gastronómica</div>
+                        )}
+                    </div>
+                    <div style={{ textAlign: "center", color: "#d4af37", fontSize: "18px", margin: "15px 0" }}>~ ~ ~</div>
+
+                    {blocks.map((block, i) => {
+                        const content = block.content;
+                        if (block.type === "HEADER") {
+                            return (
+                                <div key={i} style={{ marginTop: "20px", marginBottom: "10px", textAlign: "center" }}>
+                                    <div style={{ fontSize: "15px", color: "#2c3e50", fontWeight: "bold", letterSpacing: "2px", textTransform: "uppercase" }}>{content.text}</div>
+                                    <div style={{ borderBottom: "1px solid #d4af37", width: "70%", margin: "5px auto 0 auto" }}></div>
+                                </div>
+                            );
+                        } else if (block.type === "PARAGRAPH") {
+                            return <div key={i} style={{ fontSize: "14px", color: "#34495e", textAlign: "center", margin: "10px 0", lineHeight: "1.6" }}>{content.text}</div>;
+                        } else if (block.type === "DISH") {
+                            const showPrice = menuType !== "MENU" && content.price;
+                            return (
+                                <div key={i} style={{ marginBottom: "12px", textAlign: "center" }}>
+                                    <div style={{ display: "flex", justifyContent: "center", alignItems: "baseline" }}>
+                                        <div style={{ fontSize: "15px", color: "#2c3e50" }}>{content.name}</div>
+                                        {showPrice && <div style={{ fontSize: "14px", color: "#b8860b", fontStyle: "italic", marginLeft: "6px" }}>{content.price}€</div>}
+                                    </div>
+                                    {content.description && <div style={{ fontSize: "12px", color: "#7f8c8d", fontStyle: "italic", marginTop: "2px" }}>{content.description}</div>}
+                                </div>
+                            );
+                        }
+                        return null;
+                    })}
+                    <div style={{ marginTop: "30px", borderTop: "1px solid #eee", paddingTop: "15px", textAlign: "center" }}>
+                        <div style={{ fontSize: "11px", color: "#bdc3c7", fontFamily: "Helvetica, Arial, sans-serif", letterSpacing: "2px" }}>LOREMAR  |  {new Date().getFullYear()}</div>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }

@@ -39,7 +39,7 @@ export async function PUT(req: Request, { params }: { params: Promise<{ id: stri
         }
 
         const data = await req.json();
-        const { name, type, price, blocks, slug, seoTitle, seoDescription, order, mainImage } = data;
+        const { name, type, price, blocks, slug, seoTitle, seoDescription, order, mainImage, menuDay } = data;
 
         if (blocks) {
             // Actualización completa (transaccional): borramos bloques viejos y creamos nuevos
@@ -56,6 +56,7 @@ export async function PUT(req: Request, { params }: { params: Promise<{ id: stri
                         seoDescription,
                         order: order !== undefined ? parseInt(order) : undefined,
                         mainImage,
+                        menuDay: menuDay || null,
                         blocks: {
                             create: blocks.map((block: any, index: number) => ({
                                 order: index,
@@ -80,6 +81,7 @@ export async function PUT(req: Request, { params }: { params: Promise<{ id: stri
                     seoDescription,
                     order: order !== undefined ? parseInt(order) : undefined,
                     mainImage,
+                    menuDay: menuDay || null,
                 },
             });
             return NextResponse.json(updatedMenu);

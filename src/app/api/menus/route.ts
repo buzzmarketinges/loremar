@@ -11,7 +11,7 @@ export async function POST(req: Request) {
         }
 
         const data = await req.json();
-        const { name, type, price, blocks, slug, seoTitle, seoDescription, order, mainImage } = data;
+        const { name, type, price, blocks, slug, seoTitle, seoDescription, order, mainImage, menuDay } = data;
 
         if (!name || !type) {
             return NextResponse.json({ error: "Faltan datos obligatorios" }, { status: 400 });
@@ -27,6 +27,7 @@ export async function POST(req: Request) {
                 seoDescription,
                 order: order ? parseInt(order) : 0,
                 mainImage,
+                menuDay: menuDay || null,
                 blocks: {
                     create: blocks.map((block: any, index: number) => ({
                         order: index,

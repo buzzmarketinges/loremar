@@ -183,6 +183,19 @@ export default async function MenuPage({
                     </div>
                 )}
 
+                {/* Menu Day */}
+                {menu.menuDay && menu.type === "MENU" && (
+                    <div style={{
+                        color: "#aaa",
+                        fontSize: "1rem",
+                        fontStyle: "italic",
+                        marginBottom: "1rem",
+                        letterSpacing: "1px"
+                    }}>
+                        {menu.menuDay}
+                    </div>
+                )}
+
                 {/* Price for fixed menus (compacted) */}
                 {menu.price && menu.type === "MENU" && (
                     <div style={{ position: "relative", marginBottom: "2rem", display: "inline-block" }}>
