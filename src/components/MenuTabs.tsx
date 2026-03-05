@@ -28,40 +28,42 @@ export default function MenuTabs({ menus }: { menus: any[] }) {
                 >
                     Nuestros Menús
                 </button>
-                <button
-                    onClick={() => setActiveTab("CARTA")}
-                    className={`pill-btn ${activeTab === "CARTA" ? "active" : ""}`}
+                <Link
+                    href="/carta"
+                    className="pill-btn"
                     style={{
-                        backgroundColor: activeTab === "CARTA" ? "rgba(212,175,55,0.15)" : "transparent",
-                        border: `1px solid ${activeTab === "CARTA" ? "var(--gold)" : "#444"}`,
-                        color: activeTab === "CARTA" ? "var(--gold)" : "#888",
+                        backgroundColor: "transparent",
+                        border: "1px solid #444",
+                        color: "#888",
                         padding: "0.6rem 2rem",
                         borderRadius: "50px",
                         fontSize: "0.9rem",
                         fontWeight: "500",
+                        textDecoration: "none",
                         cursor: "pointer",
                         transition: "all 0.3s ease"
                     }}
                 >
                     Carta
-                </button>
-                <button
-                    onClick={() => setActiveTab("VINO")}
-                    className={`pill-btn ${activeTab === "VINO" ? "active" : ""}`}
+                </Link>
+                <Link
+                    href="/vinos"
+                    className="pill-btn"
                     style={{
-                        backgroundColor: activeTab === "VINO" ? "rgba(212,175,55,0.15)" : "transparent",
-                        border: `1px solid ${activeTab === "VINO" ? "var(--gold)" : "#444"}`,
-                        color: activeTab === "VINO" ? "var(--gold)" : "#888",
+                        backgroundColor: "transparent",
+                        border: "1px solid #444",
+                        color: "#888",
                         padding: "0.6rem 2rem",
                         borderRadius: "50px",
                         fontSize: "0.9rem",
                         fontWeight: "500",
+                        textDecoration: "none",
                         cursor: "pointer",
                         transition: "all 0.3s ease"
                     }}
                 >
                     Vinos
-                </button>
+                </Link>
             </div>
 
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "2rem", maxWidth: "1200px", margin: "4rem auto 0 auto" }}>

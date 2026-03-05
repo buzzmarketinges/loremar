@@ -10,8 +10,8 @@ import MenuTabs from "@/components/MenuTabs";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Restaurante Loremar | Marisquería y Arroces en Sabadell",
-  description: "Te traemos el mejor marisco fresco directo de la lonja. Descubre los mejores arroces y tapas de Sabadell",
+  title: "Restaurante Loremar | Arrocería y Cocina de Mercado en Sabadell",
+  description: "Especialistas en arroces, tapas y cocina de mercado en Sabadell. Descubre nuestra propuesta gastronómica mediterránea.",
   alternates: {
     canonical: "https://restaurantloremar.com",
   },
@@ -78,7 +78,7 @@ export default async function Home() {
             marginBottom: "1.5rem",
             fontWeight: "normal"
           }}>
-            Marisquería y Arrocería en el centro de Sabadell
+            Arrocería y Cocina de Mercado en el centro de Sabadell
           </h1>
           <h2 style={{
             fontSize: "clamp(3.5rem, 8vw, 6rem)",
@@ -89,7 +89,7 @@ export default async function Home() {
             fontFamily: "var(--font-serif)",
             fontWeight: "normal"
           }}>
-            Del mar al <br /> <span style={{ color: "var(--gold)", whiteSpace: "nowrap" }}>corazón de Sabadell</span>
+            Sabores auténticos en el <br /> <span style={{ color: "var(--gold)", whiteSpace: "nowrap" }}>corazón de Sabadell</span>
           </h2>
           <p style={{
             fontSize: "1.2rem",
@@ -100,8 +100,7 @@ export default async function Home() {
             fontFamily: "var(--font-sans)",
             fontWeight: "300"
           }}>
-            En Loremar, el respeto al producto es nuestra identidad. <br />
-            Traemos el mejor marisco fresco directo de la lonja a nuestra cocina para ofrecerte el mejor producto.
+            Seleccionamos los mejores productos de mercado y proximidad para ofrecerte una experiencia gastronómica única e inolvidable.
           </p>
           <div className="hero-actions" style={{ display: "flex", gap: "1.5rem", justifyContent: "center" }}>
             <a href="#cartas" style={{
@@ -133,7 +132,7 @@ export default async function Home() {
       {/* Sección de Cartas Dinámicas */}
       <section id="cartas" style={{ padding: "8rem 5%", backgroundColor: "rgba(255,255,255,0.02)" }}>
         <div style={{ textAlign: "center", marginBottom: "5rem" }}>
-          <span style={{ color: "var(--gold)", letterSpacing: "4px", fontSize: "0.8rem", textTransform: "uppercase" }}>Marisco Fresco Sabadell</span>
+          <span style={{ color: "var(--gold)", letterSpacing: "4px", fontSize: "0.8rem", textTransform: "uppercase" }}>Arrocería y Tapas Sabadell</span>
           <h2 style={{ fontSize: "3.5rem", marginTop: "1rem" }}>La propuesta gastronómica de Loremar</h2>
 
           <MenuTabs menus={menus} />
@@ -185,14 +184,14 @@ export default async function Home() {
             fontFamily: "var(--font-serif)",
             whiteSpace: "nowrap"
           }}>
-            Maestría, Lonja y Tradición
+            Arroces, Mercado y Tradición
           </h2>
           <div style={{ height: "3px", width: "80px", backgroundColor: "var(--gold)", margin: "0 auto 2.5rem auto" }} />
           <p style={{ fontSize: "1.2rem", color: "#eee", lineHeight: "1.8", marginBottom: "2rem", fontWeight: "300" }}>
-            En Loremar, entendemos que el respeto al producto es el principio de todo. Situados en el centro de Sabadell, somos su marisquería de referencia, donde la frescura llega directamente de la lonja a su mesa sin intermediarios.
+            En Loremar, entendemos que el respeto al producto es el principio de todo. Situados en el centro de Sabadell, somos su arrocería de referencia, donde la calidad del producto de mercado llega directamente a su mesa.
           </p>
           <p style={{ fontSize: "1.2rem", color: "#eee", lineHeight: "1.8", fontWeight: "300" }}>
-            Nuestro equipo domina el arte de tratar el marisco y los arroces con precisión técnica, combinando la autenticidad de los sabores tradicionales con la elegancia de la alta cocina. Una experiencia gastronómica donde cada detalle refleja nuestra pasión por el mar y un trato cercano que nos define.
+            Nuestro equipo domina el arte de tratar los arroces y las tapas con precisión técnica, combinando la autenticidad de los sabores tradicionales con la elegancia de la alta cocina. Una experiencia gastronómica donde cada detalle refleja nuestra pasión por la cocina y un trato cercano que nos define.
           </p>
         </div>
       </section>

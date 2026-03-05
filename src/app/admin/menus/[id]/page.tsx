@@ -20,7 +20,7 @@ const ALLERGENS = [
 ];
 
 const CATEGORIES = [
-    "Tapas", "Carnes", "Pescados", "Mariscos", "Postres"
+    "Tapas", "Carnes", "Pescados", "Arroces", "Postres"
 ];
 
 export default function EditMenuPage({ params }: { params: Promise<{ id: string }> }) {

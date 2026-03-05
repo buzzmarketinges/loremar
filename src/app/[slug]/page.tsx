@@ -12,7 +12,7 @@ import AllergenIcon from "@/components/AllergenIcon";
 import Navbar from "@/components/Navbar";
 
 const CATEGORIES = [
-    "Tapas", "Carnes", "Pescados", "Mariscos", "Postres"
+    "Tapas", "Carnes", "Pescados", "Arroces", "Postres"
 ];
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
     return {
         title: menu.seoTitle || `${menu.name} | Restaurante LOREMAR`,
-        description: menu.seoDescription || `Consulta nuestra carta de ${menu.name} en Restaurante LOREMAR.`,
+        description: menu.seoDescription || `Consulta nuestra carta de ${menu.name} en Restaurante LOREMAR, especialistas en arroces y cocina de mercado en Sabadell.`,
         alternates: {
             canonical: `https://restaurantloremar.com/${menu.slug || menu.id}`,
         }
