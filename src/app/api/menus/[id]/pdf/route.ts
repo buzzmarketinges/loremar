@@ -1,3 +1,5 @@
+export const maxDuration = 60; // Vercel Pro: 60s timeout para generación de PDF
+
 import { NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
 import { getServerSession } from "next-auth/next";
@@ -126,6 +128,7 @@ export async function GET(req: Request, { params }: { params: Promise<{ id: stri
         });
     } catch (error) {
         console.error("PDF generation error:", error);
-        return NextResponse.json({ error: "Error al generar el PDF" }, { status: 500 });
+        const msg = error instanceof Error ? error.message : String(error);
+        return NextResponse.json({ error: "Error al generar el PDF: " + msg }, { status: 500 });
     }
 }
