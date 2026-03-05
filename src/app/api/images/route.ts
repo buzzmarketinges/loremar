@@ -16,30 +16,40 @@ export async function POST(request: Request): Promise<NextResponse> {
     const filename = searchParams.get('filename');
     const dishName = searchParams.get('dishName');
 
-    if (!filename || !request.body) {
+    if (!filename) {
         return NextResponse.json({ error: "Archivo faltante" }, { status: 400 });
     }
 
     try {
         let url = "";
 
-        if (process.env.USE_LOCAL_STORAGE === "true") {
+        // Leer el cuerpo como buffer (más compatible con Vercel serverless)
+        const arrayBuffer = await request.arrayBuffer();
+        const buffer = Buffer.from(arrayBuffer);
+
+        if (buffer.byteLength === 0) {
+            return NextResponse.json({ error: "El archivo está vacío" }, { status: 400 });
+        }
+
+        const contentType = request.headers.get('content-type') || 'application/octet-stream';
+
+        if (process.env.BLOB_READ_WRITE_TOKEN) {
+            // Vercel Blob (producción)
+            const blob = await put(filename, buffer, {
+                access: 'public',
+                contentType: contentType,
+            });
+            url = blob.url;
+        } else {
+            // Filesystem local (desarrollo sin token de Vercel)
             const uploadDir = path.join(process.cwd(), 'public', 'uploads');
             if (!fs.existsSync(uploadDir)) {
                 fs.mkdirSync(uploadDir, { recursive: true });
             }
-
-            const arrayBuffer = await request.arrayBuffer();
-            const buffer = Buffer.from(arrayBuffer);
-            const safeFilename = `${Date.now()}-${filename}`;
+            const safeFilename = `${Date.now()}-${filename.replace(/[^a-zA-Z0-9._-]/g, '_')}`;
             const filePath = path.join(uploadDir, safeFilename);
             fs.writeFileSync(filePath, buffer);
             url = `/uploads/${safeFilename}`;
-        } else {
-            const blob = await put(filename, request.body, {
-                access: 'public',
-            });
-            url = blob.url;
         }
 
         // Guardar en la base de datos el registro de la imagen
@@ -51,8 +61,8 @@ export async function POST(request: Request): Promise<NextResponse> {
         });
 
         return NextResponse.json(image, { status: 201 });
-    } catch (error) {
+    } catch (error: any) {
         console.error("Upload Error:", error);
-        return NextResponse.json({ error: "Error subiendo el archivo" }, { status: 500 });
+        return NextResponse.json({ error: "Error subiendo el archivo: " + error?.message }, { status: 500 });
     }
 }
