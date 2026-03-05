@@ -24,7 +24,10 @@ export default async function Home() {
 
   const allImages = await prisma.image.findMany({
     where: {
-      linkedDishName: { not: null }
+      AND: [
+        { linkedDishName: { not: null } },
+        { linkedDishName: { not: "" } }
+      ]
     },
     orderBy: { createdAt: "desc" }
   });
