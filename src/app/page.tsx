@@ -6,6 +6,7 @@ import Image from "next/image";
 import { ChevronDown, MapPin, Phone, Instagram, Facebook, Clock, Globe } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import GalleryItem from "@/components/GalleryItem";
+import MenuTabs from "@/components/MenuTabs";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -18,15 +19,6 @@ export const metadata: Metadata = {
 
 export default async function Home() {
   const menus = await prisma.menu.findMany({
-    where: {
-      type: "MENU",
-      NOT: {
-        OR: [
-          { name: { contains: "Vino" } },
-          { name: { contains: "Vinos" } }
-        ]
-      }
-    },
     orderBy: { order: "asc" },
   });
 
@@ -144,67 +136,7 @@ export default async function Home() {
           <span style={{ color: "var(--gold)", letterSpacing: "4px", fontSize: "0.8rem", textTransform: "uppercase" }}>Marisco Fresco Sabadell</span>
           <h2 style={{ fontSize: "3.5rem", marginTop: "1rem" }}>La propuesta gastronómica de Loremar</h2>
 
-          <div style={{ display: "flex", justifyContent: "center", gap: "1rem", marginTop: "2.5rem", flexWrap: "wrap" }}>
-            <button className="pill-btn active" style={{
-              backgroundColor: "rgba(212,175,55,0.15)",
-              border: "1px solid var(--gold)",
-              color: "var(--gold)",
-              padding: "0.6rem 2rem",
-              borderRadius: "50px",
-              fontSize: "0.9rem",
-              fontWeight: "500",
-              cursor: "pointer",
-              transition: "all 0.3s ease"
-            }}>Nuestros Menús</button>
-          </div>
-        </div>
-
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "2rem", maxWidth: "1200px", margin: "0 auto" }}>
-          {menus.length === 0 ? (
-            <p style={{ color: "#888", textAlign: "center", gridColumn: "1/-1" }}>La carta se está actualizando. Vuelve pronto.</p>
-          ) : (
-            menus.map((menu: any, index: number) => (
-              <Link key={menu.id} href={`/${menu.slug || menu.id}`} className="menu-card" style={{
-                height: "450px",
-                position: "relative",
-                overflow: "hidden",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "flex-end",
-                padding: "2.5rem",
-                borderRadius: "4px",
-                border: "none",
-                backgroundColor: "var(--surface)",
-                transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
-                backgroundImage: menu.mainImage ? `linear-gradient(to bottom, rgba(10,10,10,0.3) 0%, rgba(10,10,10,1) 60%), url('${menu.mainImage}')` : undefined,
-                backgroundSize: "cover",
-                backgroundPosition: "center"
-              }}>
-                <div style={{
-                  position: "absolute",
-                  top: "2.5rem",
-                  right: "2.5rem",
-                  color: "rgba(212,175,55,0.1)",
-                  fontSize: "5rem",
-                  fontWeight: "bold",
-                  fontFamily: "var(--font-serif)"
-                }}>
-                  0{index + 1}
-                </div>
-                <h3 style={{ fontSize: "2.5rem", color: "#fff", marginBottom: "0.5rem", textShadow: "0 2px 15px rgba(0,0,0,0.8)" }}>{menu.name}</h3>
-                <div style={{
-                  marginTop: "1.5rem",
-                  display: "inline-block",
-                  color: "var(--gold)",
-                  fontSize: "0.9rem",
-                  fontWeight: "bold",
-                  letterSpacing: "1px"
-                }}>
-                  VER MENÚ →
-                </div>
-              </Link>
-            ))
-          )}
+          <MenuTabs menus={menus} />
         </div>
       </section>
 
