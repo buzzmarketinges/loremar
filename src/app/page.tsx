@@ -22,8 +22,7 @@ export default async function Home() {
     orderBy: { order: "asc" },
   });
 
-  const favoriteImages = await prisma.image.findMany({
-    where: { isFavorite: true },
+  const allImages = await prisma.image.findMany({
     orderBy: { createdAt: "desc" }
   });
 
@@ -89,7 +88,7 @@ export default async function Home() {
             fontFamily: "var(--font-serif)",
             fontWeight: "normal"
           }}>
-            Sabores auténticos en el <br /> <span style={{ color: "var(--gold)", whiteSpace: "nowrap" }}>corazón de Sabadell</span>
+            Arroces y tapas en el <br /> <span style={{ color: "var(--gold)", whiteSpace: "nowrap" }}>corazón de Sabadell</span>
           </h2>
           <p style={{
             fontSize: "1.2rem",
@@ -196,24 +195,73 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* Nueva Sección: Imágenes de nuestros platos */}
-      {favoriteImages.length > 0 && (
-        <section id="galeria" style={{ padding: "10rem 5%", backgroundColor: "var(--background)" }}>
+      {/* Sección: Imágenes de nuestros platos (Galería completa) */}
+      {allImages.length > 0 && (
+        <section id="galeria" style={{ padding: "10rem 5%", backgroundColor: "var(--background)", position: "relative" }}>
           <div style={{ textAlign: "center", marginBottom: "5rem" }}>
-            <span style={{ color: "var(--gold)", letterSpacing: "4px", fontSize: "0.8rem", textTransform: "uppercase" }}>Calidad de Primera</span>
+            <span style={{ color: "var(--gold)", letterSpacing: "4px", fontSize: "0.8rem", textTransform: "uppercase" }}>Nuestra Cocina</span>
             <h2 style={{ fontSize: "3.5rem", marginTop: "1rem" }}>Imágenes de nuestros platos</h2>
             <div style={{ height: "3px", width: "100px", backgroundColor: "var(--gold)", margin: "1.5rem auto" }} />
           </div>
 
           <div style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
-            gap: "2rem",
-            maxWidth: "1400px",
+            gridTemplateColumns: "repeat(auto-fill, minmax(350px, 1fr))",
+            gap: "1.5rem",
+            maxWidth: "1600px",
             margin: "0 auto"
           }}>
-            {favoriteImages.map((img: any) => (
-              <GalleryItem key={img.id} img={img} />
+            {allImages.map((img: any) => (
+              <div key={img.id} className="gallery-item-wrapper" style={{
+                position: "relative",
+                height: "400px",
+                overflow: "hidden",
+                borderRadius: "4px",
+                cursor: "pointer",
+                border: "1px solid rgba(212, 175, 55, 0.1)"
+              }}>
+                <Image
+                  src={img.url}
+                  alt={img.linkedDishName || "Plato Loremar"}
+                  fill
+                  style={{ objectFit: "cover", transition: "transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)" }}
+                  className="gallery-img"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                />
+                <div style={{
+                  position: "absolute",
+                  inset: 0,
+                  background: "linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.8) 100%)",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "flex-end",
+                  padding: "2rem",
+                  transition: "opacity 0.4s ease"
+                }} className="gallery-overlay">
+                  {img.linkedDishName && (
+                    <h3 style={{
+                      color: "#fff",
+                      fontSize: "1.4rem",
+                      fontFamily: "var(--font-serif)",
+                      margin: 0,
+                      fontWeight: "normal",
+                      transform: "translateY(10px)",
+                      transition: "transform 0.4s ease"
+                    }} className="gallery-dish-name">
+                      {img.linkedDishName}
+                    </h3>
+                  )}
+                  <div style={{
+                    height: "2px",
+                    width: "40px",
+                    backgroundColor: "var(--gold)",
+                    marginTop: "0.8rem",
+                    transform: "scaleX(0)",
+                    transformOrigin: "left",
+                    transition: "transform 0.4s ease"
+                  }} className="gallery-dish-line" />
+                </div>
+              </div>
             ))}
           </div>
         </section>
@@ -325,10 +373,18 @@ export default async function Home() {
           transform: translateY(-10px);
           box-shadow: 0 20px 40px rgba(0,0,0,0.6);
         }
-        .gallery-item:hover {
-          transform: scale(1.02);
+        .gallery-item-wrapper:hover .gallery-img {
+          transform: scale(1.1);
+        }
+        .gallery-item-wrapper:hover .gallery-dish-name {
+          transform: translateY(0) !important;
+        }
+        .gallery-item-wrapper:hover .gallery-dish-line {
+          transform: scaleX(1) !important;
+        }
+        .gallery-item-wrapper:hover {
           border-color: var(--gold) !important;
-          z-index: 10;
+          box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
         html {
           scroll-behavior: smooth;
