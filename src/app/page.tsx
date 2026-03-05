@@ -22,12 +22,14 @@ export default async function Home() {
     orderBy: { order: "asc" },
   });
 
+  const validDishes = await prisma.dish.findMany({
+    select: { name: true }
+  });
+  const validDishNames = validDishes.map((d: any) => d.name);
+
   const allImages = await prisma.image.findMany({
     where: {
-      AND: [
-        { linkedDishName: { not: null } },
-        { linkedDishName: { not: "" } }
-      ]
+      linkedDishName: { in: validDishNames }
     },
     orderBy: { createdAt: "desc" }
   });

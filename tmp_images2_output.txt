@@ -1,0 +1,7 @@
+﻿Images:
+- ID: 9241f1c8-7b6a-4f04-af68-a7290f491d71, linkedDishName: "Men├║ diario", url: https://eo3pkuod9pqc2zpb.public.blob.vercel-storage.com/menu.png
+- ID: 095ac41f-54d4-4e51-b55b-264a544415b4, linkedDishName: "Salmon marinado", url: https://eo3pkuod9pqc2zpb.public.blob.vercel-storage.com/salmon.png
+- ID: 48f7aecf-dff7-4f3b-a411-00c31f6d6f39, linkedDishName: "Salm├│n marinado", url: https://eo3pkuod9pqc2zpb.public.blob.vercel-storage.com/salmon%20marinado.png
+- ID: 726d1b6e-fc7d-4c03-b2da-1b988abcb86b, linkedDishName: "Men├║ de grupos", url: https://eo3pkuod9pqc2zpb.public.blob.vercel-storage.com/Generated%20Image%20August%2028%2C%202025%20-%2010_43AM.jpeg
+Valid dish names:
+[ 'Salm├│n marinado' ]
