@@ -1,13 +1,14 @@
 "use client";
 
 import { useState } from "react";
+import { upload } from "@vercel/blob/client";
 
 interface ImageUploaderProps {
     label: string;
     currentImageUrl?: string;
     onUploadSuccess: (url: string) => void;
     placeholder?: string;
-    linkedName?: string; // Nombre del plato o menú para vincular
+    linkedName?: string;
 }
 
 export default function ImageUploader({ label, currentImageUrl, onUploadSuccess, placeholder, linkedName }: ImageUploaderProps) {
@@ -19,29 +20,30 @@ export default function ImageUploader({ label, currentImageUrl, onUploadSuccess,
 
         setUploading(true);
         try {
-            const urlParams = new URLSearchParams({
-                filename: file.name,
-                dishName: linkedName || ""
+            const dishNameParam = linkedName ? `&dishName=${encodeURIComponent(linkedName)}` : "";
+
+            // Usar client-side upload de Vercel Blob (evita límites de 4.5MB en serverless)
+            const blob = await upload(file.name, file, {
+                access: "public",
+                handleUploadUrl: `/api/images/upload?${dishNameParam.slice(1)}`,
             });
 
-            const response = await fetch(
-                `/api/images?${urlParams.toString()}`,
-                {
-                    method: 'POST',
-                    body: file,
-                },
-            );
+            // Registrar la imagen en la base de datos con la URL definitiva
+            const dbRes = await fetch("/api/images/register", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ url: blob.url, dishName: linkedName || null }),
+            });
 
-            if (response.ok) {
-                const data = await response.json();
-                onUploadSuccess(data.url);
+            if (dbRes.ok) {
+                onUploadSuccess(blob.url);
             } else {
-                const err = await response.json();
-                alert(err.error || "Error al subir la imagen");
+                // Aunque falle el registro en BD, la imagen está subida, usamos la URL igualmente
+                onUploadSuccess(blob.url);
             }
-        } catch (error) {
+        } catch (error: any) {
             console.error(error);
-            alert("Error de conexión");
+            alert("Error al subir la imagen: " + (error?.message || "Error desconocido"));
         } finally {
             setUploading(false);
         }

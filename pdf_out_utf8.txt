@@ -1,0 +1,291 @@
+Informe  del 1 mar 2026, 14:03:27
+Descubre lo que experimentan tus
+usuarios realesEsta URLOrigen
+Diagnostica problemas de rendimientoh t t p s : / / r e s t a u r a n t l o r e m a r . c o m / Analizar
+Evaluación de las Métricas web principales:Superada
+L a r g e s t  C o n t e n t f u l  P a i n t
+( L C P )I n t e r a c t i o n  t o  N e x t  P a i n t
+( I N P )C u m u l a t i v e  L a y o u t  S h i f t
+( C L S )
+O T R A S  M É T R I C A S  D E S T A C A D A S
+F i r s t  C o n t e n t f u l  P a i n t
+( F C P )T i m e  t o  F i r s t  B y t e
+( T T F B )A m p l i a r  v i s t a
+1,1 s
+ N/A
+ 0
+1 s
+ 0,7 s
+P e r i o d o  d e  l o s
+ú l t i m o s  2 8
+d í a s( h i s t o r i a l )
+D i f e r e n t e s  d i s p o s i t i v o s
+m ó v i l e s
+M u c h a s
+m u e s t r a s
+(I n f o r m e  d e
+e x p e r i e n c i a  d e
+u s u a r i o  d e  C h r o m e)
+D u r a c i o n e s  d e  l a  v i s i t a
+c o m p l e t a
+D i f e r e n t e s  c o n e x i o n e s  d e  r e d
+T o d a s  l a s  v e r s i o n e s  d e
+C h r o m e
+Rendimient o
+75
+Accesibilidad
+89
+ 100
+SEO
+100
+PageSpeed Insights Copiar enlace Documentos
+Los valores son estimaciones y pueden variar. La puntuación del
+rendimiento se calcula  directamente a partir de estas métricas. Ver
+calculadora.
+0–49 50–89 90–100
+Prácticas
+recomendadas
+75
+Rendimiento
+MÉTRICAS Ampliar vista
+First Contentful P aint
+0 , 8   sRenderizado del mayor elemento con
+contenido
+26,6 s
+Total Blocking Time
+2 0   m sCambios de diseño acumulados
+0MóvilOrdenador
+ PageSpeed Insights Copiar enlace Documentos
+Mostrar auditorías relacionadas con: A l lFCPLCPTBTSpeed Index
+1 , 9   s
+Captured at 1 mar 2026, 14:03
+CET
+Moto G P ower emulado with
+Lighthouse 13.0.1
+Sesión de una sola página
+Carga inicial de la página
+ Limitación de 4G lenta
+ Using HeadlessChromium
+144.0.7559.132 with lr
+ESTADÍSTICAS
+Mejorar la entrega de imágenes  —Ahorro estimado de 4511 KiB
+Si se reduce el tiempo de descarga de las imágenes, se puede mejorar el tiempo de carga
+percibido de la página y el L CP. Más información sobre la optimización del tamaño de las
+imágenes LCPFCPSin puntuar
+restaurantloremar.com Propio 5 0 6 2 ,1  K i B 4 5 1 1 ,1  K i B
+Hero
+Backgro
+und
+<img
+src="/assets/restaurante-
+loremar-sabadell.webp"
+alt="Hero Background"
+style="width: 100%; height:
+100%; object-fit: cover;">/assets/restaurante-loremar-
+sabadell.webp4906,2 KiB 4399,9 KiB
+Aumentar el factor de compresión de la imagen
+podría mejorar su tamaño de descarga.4181,0 KiB
+Este archivo de imagen es más grande de lo
+necesario (1494x2983) para las dimensiones
+mostradas (2160x1440). Usa imágenes
+adaptables para reducir el tamaño de descarga
+de la imagen.1480,7 KiB
+(restaurantloremar.com)URLTamaño del
+recursoAhorr o
+estimado
+PageSpeed Insights Copiar enlace Documentos
+JavaScript antiguo  —Ahorro estimado de 14 KiB
+Los polyfills y los transforms permiten que los navegadores antiguos utilicen las nuevas funciones
+de JavaScript. Sin embargo, muchos de estos polyfills y transforms no son necesarios para los
+navegadores modernos. T e recomendamos que modifiques tu proceso de compilación de
+JavaScript para que no transpile las funciones de Baseline , a menos que sepas que debes admitir
+navegadores antiguos. Descubre por qué la mayoría de los sitios pueden implementar código
+ES6+ sin transpilación .LCPFCPSin puntuarExperience Background
+<img
+src="/assets/restaurante-
+sabadell.webp"
+alt="Experience Background"
+style="width: 100%; height:
+100%; object-fit: cover;
+filter: blur(3px)
+brightness(0.6);">/assets/restaurante-
+sabadell.webp155,9 KiB 111,2 KiB
+Aumentar el factor de compresión de la imagen
+podría mejorar su tamaño de descarga.111,2 KiB
+(restaurantloremar.com)
+restaurantloremar.com Propio 1 3 ,7  K i B
+…chunks/18bf4b74296a623f.js 13,7 KiB
+…
+chunks/18bf4b74296a623f.js:1:6066 Array.prototype.at
+…
+chunks/18bf4b74296a623f.js:1:5454 Array.prototype.flat
+…
+chunks/18bf4b74296a623f.js:1:5567 Array.prototype.flatMap
+…
+chunks/18bf4b74296a623f.js:1:5943 Object.fromEntries
+…
+chunks/18bf4b74296a623f.js:1:6201 Object.hasOwn
+…
+chunks/18bf4b74296a623f.js:1:5196String.prototype.trimEn
+d
+(restaurantloremar.com)
+(restaurantloremar.c
+om)
+(restaurantloremar.c
+om)
+(restaurantloremar.c
+om)
+(restaurantloremar.c
+om)
+(restaurantloremar.c
+om)
+(restaurantloremar.c
+om)URLTamaño del
+recursoAhorr o
+estimado
+URLBytes
+desper diciados
+PageSpeed Insights Copiar enlace Documentos
+Redistribución forzada
+Se produce un reflow forzado cuando JavaScript consulta propiedades geométricas (como
+offsetWidth) después de que los estilos hayan sido invalidados por un cambio en el estado del
+DOM. Esto puede provocar un rendimiento deficiente. Consulta más información sobre los reflows
+forzados  y las posibles mitigaciones. Sin puntuar
+Desglose de L CP
+Cada subparte tiene estrategias de mejora específicas . Lo ideal es que la mayor parte del tiempo
+de LCP se dedique a cargar los recursos, no a los retrasos. LCPSin puntuar
+MARISQUERÍA Y ARR OCERÍA EN EL CENTR O DE SABADELL
+<h1 style="color: var(--gold); letter-spacing: 6px; text-transform:
+uppercase;">
+Estas estadísticas también están disponibles en el panel R endimiento de Chrome DevT ools. Graba una traza  para ver
+información más detallada.…
+chunks/18bf4b74296a623f.js:1:5111String.prototype.trimSt
+art
+(restaurantloremar.c
+om)
+[sin asignación] 30 ms
+Time to First Byte 0 ms
+Retraso de renderizado de elementos 2140 ms
+DIAGNÓSTICOS
+Reduce el contenido JavaScript que no se use  —Ahorro estimado de 30 KiB
+Reduce el contenido JavaScript que no se use y retrasa la carga de secuencias de comandos hasta
+que se necesiten. Así, se reducirán los bytes consumidos por la actividad de red. Consulta cómo
+reducir el contenido de JavaScript que no se use LCPFCPSin puntuarURLBytes
+desper diciados
+Fuent e Tiempo t otal de r edistr ibución
+Subp arte Duración
+PageSpeed Insights Copiar enlace Documentos
+Evita cargas útiles de red de gran tamaño  —Tamaño total: 5226 KiB
+Si la carga útil de la red es muy grande, los usuarios consumen más datos móviles y las páginas
+tardan más en cargarse. Consulta cómo reducir el tamaño de la carga útil Sin puntuar
+Evita tareas largas del hilo principal  —1 tarea larga encontrada
+Enumera las tareas más largas del hilo principal, lo que es útil para identificar las que más
+contribuyen a la latencia. Consulta cómo evitar tareas largas del hilo principal TBTSin puntuarrestaurantloremar.com Propio 6 9 ,7  K i B 2 9 ,7  K i B
+…chunks/18bf4b74296a623f.js 69,7 KiB 29,7 KiB
+(restaurantloremar.com)
+restaurantloremar.com Propio 5 2 1 6 ,6  K i B
+/assets/restaurante-loremar-sabadell.webp 4906,8 KiB
+/assets/restaurante-sabadell.webp 156,4 KiB
+…chunks/18bf4b74296a623f.js 70,4 KiB
+…chunks/10cbf02e6fc36465.js 32,3 KiB
+…chunks/e1bb629f3ccb19a9.js 9,8 KiB
+https://restaurantloremar.com 8,8 KiB
+…chunks/804393fe99543ecd.js 8,7 KiB
+…chunks/d2be314c3ece3fbe.js 8,2 KiB
+…chunks/82abf2d65f5428ae.js 8,0 KiB
+…chunks/0f8dfaed27cd3cfa.js 7,2 KiB
+(restaurantloremar.com)
+(restaurantloremar.com)
+(restaurantloremar.com)
+(restaurantloremar.com)
+(restaurantloremar.com)
+(restaurantloremar.com)
+(restaurantloremar.com)
+(restaurantloremar.com)
+(restaurantloremar.com)
+restaurantloremar.com Propio 8 1  m s
+…chunks/turbopack-5dea8f5e176a2e1e.js 26.876 ms 81 ms
+(restaurantloremar.com)URLTamaño de
+la
+transferenciaAhorro
+estimado
+URLTamaño de
+la
+transferencia
+URLHora de
+inicioDuración
+PageSpeed Insights Copiar enlace Documentos
+Estas comprobaciones permiten identificar oportunidades para mejorar la
+accesibilidad de tu aplicación web . La detección automática solo puede
+detectar un subconjunto de problemas y no garantiza la accesibilidad de tu
+aplicación web, por lo que también te recomendamos que hagas pruebas
+manuales .Consulta más información sobre el rendimiento de tu aplicación. Estos datos no afectan directamente  a la puntuación del
+rendimiento.
+AUDITORÍAS APROBADAS (20) Mostrar
+Accesibilidad
+89
+NOMBRES Y ETIQUETAS
+Los botones no tienen nombres accesibles
+Si un botón no tiene un nombre accesible, los lectores de pantalla lo leerán en voz alta como
+"botón", lo que hace que el botón no resulte útil a los usuarios que necesitan lectores de pantalla.
+Consulta cómo hacer que los botones sean más accesibles
+Los enlaces no tienen nombres reconocibles
+Usar textos de enlace (y textos alternativos para las imágenes, si estas se usan como enlaces) que
+sean reconocibles, únicos y que se puedan seleccionar mejora la experiencia de navegación de los
+usuarios de lectores de pantalla. Consulta cómo hacer que los enlaces sean accesiblesbody > div > nav > button.mobile-toggle
+<button style="display: none; background: none; border: none;
+color: var(--gold); cursor: pointer;" class="mobile-toggle">
+Elementos con errores
+PageSpeed Insights Copiar enlace Documentos
+A continuación se indican consejos para mejorar la semántica de los controles de tu aplicación. Estos consejos pueden
+mejorar la experiencia de los usuarios de tecnologías de asistencia, como los lectores de pantalla.div > div > div > a.hover-opacity
+<a href="https://www.instagram.com/restaurantloremar/" target="_blank" rel="noopener
+noreferrer" style="color:var(--gold);transition:opacity 0.3s" class="hover-opacity">
+div > div > div > a.hover-opacity
+<a href="https://www.facebook.com/RestaurantLoremar/" target="_blank" rel="noopener
+noreferrer" style="color:var(--gold);transition:opacity 0.3s" class="hover-opacity">
+ELEMENTOS ADICIONALES QUE SE DEBEN COMPROBAR MANUALMENTE (10) Mostrar
+Estos elementos se ocupan de áreas que las herramientas de prueba automáticas no pueden analizar. Consulta más
+información sobre cómo revisar la accesibilidad  en nuestra guía.
+AUDITORÍAS APROBADAS (19) Mostrar
+NO APLICABLE (39) Mostrar
+Prácticas r ecomendadas
+100
+CONFIANZA Y SEGURIDAD
+Asegura que la CSP sea efectiva frente a ataques XSS
+Usa una política de HST S sólida
+Asegúrate de que el aislamiento de orígenes sea adecuado con C OOP
+Mitiga el secuestro de clics con XFO o CSPElementos con errores
+PageSpeed Insights Copiar enlace Documentos
+Estas comprobaciones aseguran que tu página siga las recomendaciones
+básicas sobre optimización en buscadores. Hay muchos otros factores
+adicionales que Lighthouse no valora aquí y que pueden afectar a tu
+posicionamiento en las búsquedas, como el rendimiento en las Métricas
+web principales . Consulta más información sobre las Directrices básicas de
+la Búsqueda de Google .Mitigar el XSS basado en DOM con T rusted T ypes
+AUDITORÍAS APROBADAS (13) Mostrar
+NO APLICABLE (2) Mostrar
+SEO
+100
+ELEMENTOS ADICIONALES QUE SE DEBEN COMPROBAR MANUALMENTE (1) Ocultar
+Los datos estructurados son válidos
+Ejecuta estos validadores adicionales en tu sitio web para comprobar más prácticas recomendadas de SEO.
+AUDITORÍAS APROBADAS (9) Mostrar
+NO APLICABLE (1) Mostrar
+PageSpeed Insights Copiar enlace Documentos
+Más información en PageSpeed Insights
+Novedades
+Documentación
+Más información sobre el rendimiento web
+Haz preguntas en Stack Overflow
+Lista de distribuciónContenido relacionado
+Actualizaciones
+Aspectos básicos de la Web
+Casos de éxito
+PódcastsContacto
+Twitter
+YouTube
+Chrome Firebase Todos los productos
+Política de Términos y Privacidad
+P a r a  o b t e n e r  m á s  i n f o r m a c i ó n ,  c o n s u l t a  l a s  P o l í t i c a s  d e l  S i t i o  G o o g l e  D e v e l o p e r s .
+PageSpeed Insights Copiar enlace Documentos

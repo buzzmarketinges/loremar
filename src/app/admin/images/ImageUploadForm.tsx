@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { upload } from "@vercel/blob/client";
 
 export default function ImageUploadForm() {
     const [file, setFile] = useState<File | null>(null);
@@ -28,26 +29,28 @@ export default function ImageUploadForm() {
 
         setUploading(true);
         try {
-            const response = await fetch(
-                `/api/images?filename=${file.name}&dishName=${encodeURIComponent(dishName)}`,
-                {
-                    method: 'POST',
-                    body: file,
-                },
-            );
+            const dishNameParam = dishName ? `dishName=${encodeURIComponent(dishName)}` : "";
 
-            if (response.ok) {
-                setFile(null);
-                setDishName("");
-                setShowForm(false);
-                router.refresh();
-            } else {
-                const err = await response.json();
-                alert(err.error || "Error al subir la imagen");
-            }
-        } catch (error) {
+            // Client-side upload directo a Vercel Blob (sin límite de 4.5MB)
+            const blob = await upload(file.name, file, {
+                access: "public",
+                handleUploadUrl: `/api/images/upload${dishNameParam ? `?${dishNameParam}` : ""}`,
+            });
+
+            // Registrar la URL en la base de datos
+            await fetch("/api/images/register", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ url: blob.url, dishName: dishName || null }),
+            });
+
+            setFile(null);
+            setDishName("");
+            setShowForm(false);
+            router.refresh();
+        } catch (error: any) {
             console.error(error);
-            alert("Error de conexión");
+            alert("Error al subir la imagen: " + (error?.message || "Error desconocido"));
         } finally {
             setUploading(false);
         }
