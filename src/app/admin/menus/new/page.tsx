@@ -60,6 +60,20 @@ export default function NewMenuPage() {
         setBlocks(blocks.filter(b => b.id !== id));
     };
 
+    const moveBlockUp = (index: number) => {
+        if (index === 0) return;
+        const newBlocks = [...blocks];
+        [newBlocks[index - 1], newBlocks[index]] = [newBlocks[index], newBlocks[index - 1]];
+        setBlocks(newBlocks);
+    };
+
+    const moveBlockDown = (index: number) => {
+        if (index === blocks.length - 1) return;
+        const newBlocks = [...blocks];
+        [newBlocks[index + 1], newBlocks[index]] = [newBlocks[index], newBlocks[index + 1]];
+        setBlocks(newBlocks);
+    };
+
     const updateBlockContent = (id: string, newContent: any) => {
         setBlocks(blocks.map(b => b.id === id ? { ...b, content: { ...b.content, ...newContent } } : b));
     };
@@ -237,11 +251,15 @@ export default function NewMenuPage() {
 
                     {blocks.map((block, index) => (
                         <div key={block.id} style={{ padding: "1.5rem", backgroundColor: "var(--surface)", border: "1px solid var(--border)", borderRadius: "8px", position: "relative" }}>
-                            <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "1rem" }}>
+                            <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "1rem", alignItems: "center" }}>
                                 <span style={{ color: "var(--gold)", fontWeight: "bold" }}>
                                     {index + 1}. {block.type === "HEADER" ? "Encabezado" : block.type === "PARAGRAPH" ? "Párrafo" : `Plato [${block.content.category || "Otros"}]`}
                                 </span>
-                                <button type="button" onClick={() => removeBlock(block.id)} style={{ color: "#ff4444", background: "none", border: "none", cursor: "pointer" }}>Eliminar</button>
+                                <div style={{ display: "flex", gap: "0.5rem", alignItems: "center" }}>
+                                    <button type="button" title="Subir bloque" onClick={() => moveBlockUp(index)} disabled={index === 0} style={{ padding: "0.2rem 0.6rem", background: "transparent", border: "1px solid var(--border)", color: index === 0 ? "rgba(255,255,255,0.2)" : "var(--gold)", borderRadius: "4px", cursor: index === 0 ? "not-allowed" : "pointer" }}>↑</button>
+                                    <button type="button" title="Bajar bloque" onClick={() => moveBlockDown(index)} disabled={index === blocks.length - 1} style={{ padding: "0.2rem 0.6rem", background: "transparent", border: "1px solid var(--border)", color: index === blocks.length - 1 ? "rgba(255,255,255,0.2)" : "var(--gold)", borderRadius: "4px", cursor: index === blocks.length - 1 ? "not-allowed" : "pointer" }}>↓</button>
+                                    <button type="button" onClick={() => removeBlock(block.id)} style={{ color: "#ff4444", background: "none", border: "none", cursor: "pointer", marginLeft: "1rem" }}>Eliminar Bloque</button>
+                                </div>
                             </div>
 
                             {block.type === "HEADER" && (

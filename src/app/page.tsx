@@ -96,7 +96,7 @@ export default async function Home() {
             fontFamily: "var(--font-serif)",
             fontWeight: "normal"
           }}>
-            Arroces y tapas en el <br /> <span style={{ color: "var(--gold)", whiteSpace: "nowrap" }}>corazón de Sabadell</span>
+            <span style={{ whiteSpace: "nowrap" }}>Arroces y tapas en el</span> <br /> <span style={{ color: "var(--gold)", whiteSpace: "nowrap" }}>corazón de Sabadell</span>
           </h2>
           <p style={{
             fontSize: "1.2rem",
