@@ -23,6 +23,9 @@ export default async function Home() {
   });
 
   const allImages = await prisma.image.findMany({
+    where: {
+      linkedDishName: { not: null }
+    },
     orderBy: { createdAt: "desc" }
   });
 
