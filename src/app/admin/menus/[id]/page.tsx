@@ -249,9 +249,12 @@ export default function EditMenuPage({ params }: { params: Promise<{ id: string 
                                 value={name}
                                 onChange={e => {
                                     const val = e.target.value;
+                                    const oldSeoTitle = `${name} | Restaurante LOREMAR`;
                                     setName(val);
                                     if (!slug) setSlug(generateSlug(val));
-                                    if (!seoTitle) setSeoTitle(`${val} | Restaurante LOREMAR`);
+                                    if (!seoTitle || seoTitle === oldSeoTitle) {
+                                        setSeoTitle(`${val} | Restaurante LOREMAR`);
+                                    }
                                 }}
                                 style={{ width: "100%", padding: "0.8rem", borderRadius: "4px", backgroundColor: "var(--background)", border: "1px solid var(--border)", color: "var(--foreground)" }}
                                 required
@@ -282,15 +285,7 @@ export default function EditMenuPage({ params }: { params: Promise<{ id: string 
                                     />
                                 </div>
                             ) : <div></div>}
-                            <div>
-                                <label style={{ display: "block", color: "var(--gold)", marginBottom: "0.5rem" }}>Orden</label>
-                                <input
-                                    type="number"
-                                    value={order}
-                                    onChange={e => setOrder(e.target.value)}
-                                    style={{ width: "100%", padding: "0.8rem", borderRadius: "4px", backgroundColor: "var(--background)", border: "1px solid var(--border)", color: "var(--foreground)" }}
-                                />
-                            </div>
+                            {/* Orden was removed here */}
                         </div>
                     </div>
                     <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1.5rem", marginBottom: "1.5rem" }}>
