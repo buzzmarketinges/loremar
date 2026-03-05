@@ -164,7 +164,8 @@ export default function EditMenuPage({ params }: { params: Promise<{ id: string 
                 a.click();
                 a.remove();
             } else {
-                alert("Error al generar el PDF");
+                const errData = await res.json().catch(() => null);
+                alert("Error al generar el PDF: " + (errData?.error || res.statusText));
             }
         } catch (err) {
             alert("Error de conexión al generar PDF");

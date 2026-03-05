@@ -12,31 +12,14 @@ import {
     View,
     StyleSheet,
     renderToBuffer,
-    Font,
 } from "@react-pdf/renderer";
 
-// Registrar fuentes de Google Fonts
-Font.register({
-    family: "Playfair",
-    fonts: [
-        { src: "https://fonts.gstatic.com/s/playfairdisplay/v37/nuFvD-vYSZviVYUb_rj3ij__anPXJzDwcbmjWBN2PKdFvUDQZNLo_U2r.woff2", fontWeight: 700 },
-        { src: "https://fonts.gstatic.com/s/playfairdisplay/v37/nuFiD-vYSZviVYUb_rj3ij__anPXJzDwcbmjWBN2PKdiumo.woff2", fontStyle: "italic" },
-    ],
-});
-
-Font.register({
-    family: "Lato",
-    fonts: [
-        { src: "https://fonts.gstatic.com/s/lato/v24/S6uyw4BMUTPHjx4wXg.woff2", fontWeight: 300 },
-        { src: "https://fonts.gstatic.com/s/lato/v24/S6uyw4BMUTPHjxAwXg.woff2", fontWeight: 400 },
-    ],
-});
-
+// Usamos fuentes estándar de PDF (sin descarga externa)
 const styles = StyleSheet.create({
     page: {
         backgroundColor: "#ffffff",
         padding: 50,
-        fontFamily: "Lato",
+        fontFamily: "Times-Roman",
         color: "#2c3e50",
     },
     card: {
@@ -51,39 +34,34 @@ const styles = StyleSheet.create({
         marginBottom: 20,
     },
     title: {
-        fontFamily: "Playfair",
-        fontWeight: 700,
-        fontSize: 32,
+        fontFamily: "Times-Bold",
+        fontSize: 30,
         color: "#b8860b",
         letterSpacing: 2,
-        textTransform: "uppercase",
         textAlign: "center",
-        marginBottom: 5,
+        marginBottom: 6,
     },
     subtitle: {
-        fontFamily: "Playfair",
-        fontStyle: "italic",
+        fontFamily: "Times-Italic",
         fontSize: 14,
         color: "#7f8c8d",
         textAlign: "center",
     },
     ornament: {
-        fontSize: 20,
+        fontSize: 18,
         color: "#d4af37",
         textAlign: "center",
-        marginVertical: 15,
+        marginVertical: 12,
+        fontFamily: "Times-Roman",
     },
     sectionTitle: {
-        fontFamily: "Playfair",
-        fontWeight: 700,
-        fontSize: 14,
-        textTransform: "uppercase",
-        letterSpacing: 3,
+        fontFamily: "Times-Bold",
+        fontSize: 13,
         color: "#2c3e50",
         textAlign: "center",
-        marginTop: 20,
-        marginBottom: 10,
-        padding: 0,
+        marginTop: 18,
+        marginBottom: 4,
+        letterSpacing: 2,
     },
     sectionLine: {
         borderBottomWidth: 1,
@@ -98,34 +76,34 @@ const styles = StyleSheet.create({
     dishRow: {
         flexDirection: "row",
         justifyContent: "center",
-        alignItems: "center",
-        gap: 8,
+        alignItems: "baseline",
     },
     dishName: {
-        fontWeight: 400,
-        fontSize: 14,
+        fontFamily: "Times-Roman",
+        fontSize: 13,
         color: "#2c3e50",
         textAlign: "center",
     },
     dishPrice: {
-        fontFamily: "Playfair",
-        fontStyle: "italic",
-        fontSize: 14,
+        fontFamily: "Times-Italic",
+        fontSize: 13,
         color: "#b8860b",
+        marginLeft: 6,
     },
     dishDesc: {
+        fontFamily: "Times-Italic",
         fontSize: 11,
         color: "#7f8c8d",
-        fontStyle: "italic",
         textAlign: "center",
         marginTop: 2,
     },
     paragraph: {
-        fontSize: 13,
+        fontFamily: "Times-Roman",
+        fontSize: 12,
         color: "#34495e",
         lineHeight: 1.6,
         textAlign: "center",
-        marginVertical: 10,
+        marginVertical: 8,
     },
     footer: {
         marginTop: 20,
@@ -135,15 +113,51 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
     footerText: {
-        fontSize: 10,
+        fontFamily: "Helvetica",
+        fontSize: 9,
         color: "#bdc3c7",
         textAlign: "center",
+        letterSpacing: 2,
     },
 });
 
 function MenuDocument({ menu }: { menu: any }) {
     const year = new Date().getFullYear();
-    const priceLabel = menu.type === "MENU" && menu.price ? `${menu.price}€` : "Experiencia Gastronómica";
+    const priceLabel =
+        menu.type === "MENU" && menu.price
+            ? `${menu.price}€`
+            : "Experiencia Gastronómica";
+
+    const blocks = menu.blocks.map((block: any, i: number) => {
+        const content = JSON.parse(block.content);
+        if (block.type === "HEADER") {
+            return React.createElement(
+                View,
+                { key: i },
+                React.createElement(Text, { style: styles.sectionTitle }, content.text),
+                React.createElement(View, { style: styles.sectionLine })
+            );
+        } else if (block.type === "PARAGRAPH") {
+            return React.createElement(Text, { key: i, style: styles.paragraph }, content.text);
+        } else if (block.type === "DISH") {
+            return React.createElement(
+                View,
+                { key: i, style: styles.dishItem },
+                React.createElement(
+                    View,
+                    { style: styles.dishRow },
+                    React.createElement(Text, { style: styles.dishName }, content.name),
+                    content.price
+                        ? React.createElement(Text, { style: styles.dishPrice }, `${content.price}€`)
+                        : null
+                ),
+                content.description
+                    ? React.createElement(Text, { style: styles.dishDesc }, content.description)
+                    : null
+            );
+        }
+        return null;
+    });
 
     return React.createElement(
         Document,
@@ -154,46 +168,14 @@ function MenuDocument({ menu }: { menu: any }) {
             React.createElement(
                 View,
                 { style: styles.card },
-                // Header
                 React.createElement(
                     View,
                     { style: styles.header },
-                    React.createElement(Text, { style: styles.title }, menu.name),
+                    React.createElement(Text, { style: styles.title }, menu.name.toUpperCase()),
                     React.createElement(Text, { style: styles.subtitle }, priceLabel)
                 ),
-                React.createElement(Text, { style: styles.ornament }, "❦"),
-                // Blocks
-                ...menu.blocks.map((block: any, i: number) => {
-                    const content = JSON.parse(block.content);
-                    if (block.type === "HEADER") {
-                        return React.createElement(
-                            View,
-                            { key: i },
-                            React.createElement(Text, { style: styles.sectionTitle }, content.text),
-                            React.createElement(View, { style: styles.sectionLine })
-                        );
-                    } else if (block.type === "PARAGRAPH") {
-                        return React.createElement(Text, { key: i, style: styles.paragraph }, content.text);
-                    } else if (block.type === "DISH") {
-                        return React.createElement(
-                            View,
-                            { key: i, style: styles.dishItem },
-                            React.createElement(
-                                View,
-                                { style: styles.dishRow },
-                                React.createElement(Text, { style: styles.dishName }, content.name),
-                                content.price
-                                    ? React.createElement(Text, { style: styles.dishPrice }, ` ${content.price}€`)
-                                    : null
-                            ),
-                            content.description
-                                ? React.createElement(Text, { style: styles.dishDesc }, content.description)
-                                : null
-                        );
-                    }
-                    return null;
-                }),
-                // Footer
+                React.createElement(Text, { style: styles.ornament }, "~ ~ ~"),
+                ...blocks,
                 React.createElement(
                     View,
                     { style: styles.footer },
@@ -204,7 +186,10 @@ function MenuDocument({ menu }: { menu: any }) {
     );
 }
 
-export async function GET(req: Request, { params }: { params: Promise<{ id: string }> }) {
+export async function GET(
+    req: Request,
+    { params }: { params: Promise<{ id: string }> }
+) {
     try {
         const { id } = await params;
         const session = await getServerSession(authOptions);
@@ -214,9 +199,7 @@ export async function GET(req: Request, { params }: { params: Promise<{ id: stri
 
         const menu = await prisma.menu.findUnique({
             where: { id },
-            include: {
-                blocks: { orderBy: { order: "asc" } },
-            },
+            include: { blocks: { orderBy: { order: "asc" } } },
         });
 
         if (!menu) {
@@ -236,6 +219,9 @@ export async function GET(req: Request, { params }: { params: Promise<{ id: stri
     } catch (error) {
         console.error("PDF generation error:", error);
         const msg = error instanceof Error ? error.message : String(error);
-        return NextResponse.json({ error: "Error al generar el PDF: " + msg }, { status: 500 });
+        return NextResponse.json(
+            { error: "Error al generar el PDF: " + msg },
+            { status: 500 }
+        );
     }
 }
