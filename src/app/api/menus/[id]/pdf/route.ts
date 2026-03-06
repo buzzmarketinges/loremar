@@ -196,14 +196,7 @@ function MenuDocument({ menu }: { menu: any }) {
                         ? React.createElement(Text, { style: styles.menuPrice }, `${menu.price}€`)
                         : React.createElement(Text, { style: styles.subtitle }, "Experiencia Gastronómica")
                 ),
-                React.createElement(Text, { style: styles.ornament }, "~ ~ ~"),
-                ...blocks,
-                // Footer
-                React.createElement(
-                    View,
-                    { style: styles.footer },
-                    React.createElement(Text, { style: styles.footerText }, `LOREMAR  |  ${year}`)
-                )
+                ...blocks
             )
         )
     );

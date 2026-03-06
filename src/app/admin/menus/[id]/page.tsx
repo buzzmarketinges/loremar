@@ -532,7 +532,6 @@ export default function EditMenuPage({ params }: { params: Promise<{ id: string 
                             <div style={{ fontSize: "18px", color: "#7f8c8d", fontStyle: "italic", marginTop: "5px" }}>Experiencia Gastronómica</div>
                         )}
                     </div>
-                    <div style={{ textAlign: "center", color: "#d4af37", fontSize: "20px", margin: "6px 0" }}>~ ~ ~</div>
 
                     {blocks.map((block, i) => {
                         const content = block.content;
@@ -559,9 +558,6 @@ export default function EditMenuPage({ params }: { params: Promise<{ id: string 
                         }
                         return null;
                     })}
-                    <div style={{ marginTop: "10px", borderTop: "1px solid #eee", paddingTop: "8px", textAlign: "center" }}>
-                        <div style={{ fontSize: "13px", color: "#bdc3c7", fontFamily: "Helvetica, Arial, sans-serif", letterSpacing: "2px" }}>LOREMAR  |  {new Date().getFullYear()}</div>
-                    </div>
                 </div>
             </div>
         </div>
