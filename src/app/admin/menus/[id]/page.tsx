@@ -517,13 +517,13 @@ export default function EditMenuPage({ params }: { params: Promise<{ id: string 
                 left: "-9999px",
                 width: "794px", // A4 Width
                 backgroundColor: "#fff",
-                padding: "40px",
+                padding: "25px",
                 color: "#2c3e50",
                 fontFamily: "Times New Roman, serif",
                 boxSizing: "border-box"
             }}>
-                <div style={{ border: "2px solid #d4af37", padding: "30px", minHeight: "1043px" }}>
-                    <div style={{ textAlign: "center", marginBottom: "16px" }}>
+                <div style={{ border: "2px solid #d4af37", padding: "15px", minHeight: "1043px" }}>
+                    <div style={{ textAlign: "center", marginBottom: "8px" }}>
                         {menuDay && <div style={{ fontSize: "16px", color: "#888", fontStyle: "italic", marginBottom: "5px", letterSpacing: "1px" }}>{menuDay}</div>}
                         <div style={{ fontSize: "34px", color: "#b8860b", fontWeight: "bold", letterSpacing: "2px", textTransform: "uppercase" }}>{name}</div>
                         {menuType === "MENU" && price ? (
@@ -532,23 +532,23 @@ export default function EditMenuPage({ params }: { params: Promise<{ id: string 
                             <div style={{ fontSize: "18px", color: "#7f8c8d", fontStyle: "italic", marginTop: "5px" }}>Experiencia Gastronómica</div>
                         )}
                     </div>
-                    <div style={{ textAlign: "center", color: "#d4af37", fontSize: "20px", margin: "15px 0" }}>~ ~ ~</div>
+                    <div style={{ textAlign: "center", color: "#d4af37", fontSize: "20px", margin: "6px 0" }}>~ ~ ~</div>
 
                     {blocks.map((block, i) => {
                         const content = block.content;
                         if (block.type === "HEADER") {
                             return (
-                                <div key={i} style={{ marginTop: "20px", marginBottom: "10px", textAlign: "center" }}>
+                                <div key={i} style={{ marginTop: "10px", marginBottom: "6px", textAlign: "center" }}>
                                     <div style={{ fontSize: "17px", color: "#2c3e50", fontWeight: "bold", letterSpacing: "2px", textTransform: "uppercase" }}>{content.text}</div>
                                     <div style={{ borderBottom: "1px solid #d4af37", width: "70%", margin: "5px auto 0 auto" }}></div>
                                 </div>
                             );
                         } else if (block.type === "PARAGRAPH") {
-                            return <div key={i} style={{ fontSize: "16px", color: "#34495e", textAlign: "center", margin: "10px 0", lineHeight: "1.6" }}>{content.text}</div>;
+                            return <div key={i} style={{ fontSize: "16px", color: "#34495e", textAlign: "center", margin: "4px 0", lineHeight: "1.4" }}>{content.text}</div>;
                         } else if (block.type === "DISH") {
                             const showPrice = menuType !== "MENU" && content.price;
                             return (
-                                <div key={i} style={{ marginBottom: "12px", textAlign: "center" }}>
+                                <div key={i} style={{ marginBottom: "6px", textAlign: "center" }}>
                                     <div style={{ display: "flex", justifyContent: "center", alignItems: "baseline" }}>
                                         <div style={{ fontSize: "17px", color: "#2c3e50" }}>{content.name}</div>
                                         {showPrice && <div style={{ fontSize: "16px", color: "#b8860b", fontStyle: "italic", marginLeft: "6px" }}>{content.price}€</div>}
@@ -559,7 +559,7 @@ export default function EditMenuPage({ params }: { params: Promise<{ id: string 
                         }
                         return null;
                     })}
-                    <div style={{ marginTop: "30px", borderTop: "1px solid #eee", paddingTop: "15px", textAlign: "center" }}>
+                    <div style={{ marginTop: "10px", borderTop: "1px solid #eee", paddingTop: "8px", textAlign: "center" }}>
                         <div style={{ fontSize: "13px", color: "#bdc3c7", fontFamily: "Helvetica, Arial, sans-serif", letterSpacing: "2px" }}>LOREMAR  |  {new Date().getFullYear()}</div>
                     </div>
                 </div>

@@ -17,7 +17,7 @@ import {
 const styles = StyleSheet.create({
     page: {
         backgroundColor: "#ffffff",
-        padding: 40,
+        padding: 25,
         fontFamily: "Times-Roman",
         color: "#2c3e50",
     },
@@ -25,12 +25,12 @@ const styles = StyleSheet.create({
         borderWidth: 2,
         borderColor: "#d4af37",
         borderStyle: "solid",
-        padding: 30,
+        padding: 15,
         flex: 1,
     },
     header: {
         alignItems: "center",
-        marginBottom: 16,
+        marginBottom: 8,
     },
     menuDay: {
         fontFamily: "Times-Italic",
@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
         fontSize: 18,
         color: "#d4af37",
         textAlign: "center",
-        marginVertical: 12,
+        marginVertical: 6,
         fontFamily: "Times-Roman",
     },
     sectionTitle: {
@@ -74,18 +74,18 @@ const styles = StyleSheet.create({
         fontSize: 15,
         color: "#2c3e50",
         textAlign: "center",
-        marginTop: 18,
-        marginBottom: 4,
+        marginTop: 10,
+        marginBottom: 2,
         letterSpacing: 2,
     },
     sectionLine: {
         borderBottomWidth: 1,
         borderBottomColor: "#d4af37",
-        marginHorizontal: 40,
-        marginBottom: 10,
+        marginHorizontal: 30,
+        marginBottom: 6,
     },
     dishItem: {
-        marginBottom: 10,
+        marginBottom: 6,
         alignItems: "center",
     },
     dishRow: {
@@ -110,21 +110,21 @@ const styles = StyleSheet.create({
         fontSize: 13,
         color: "#7f8c8d",
         textAlign: "center",
-        marginTop: 2,
+        marginTop: 1,
     },
     paragraph: {
         fontFamily: "Times-Roman",
         fontSize: 14,
         color: "#34495e",
-        lineHeight: 1.6,
+        lineHeight: 1.4,
         textAlign: "center",
-        marginVertical: 8,
+        marginVertical: 4,
     },
     footer: {
-        marginTop: 20,
+        marginTop: 10,
         borderTopWidth: 1,
         borderTopColor: "#eeeeee",
-        paddingTop: 10,
+        paddingTop: 8,
         alignItems: "center",
     },
     footerText: {
