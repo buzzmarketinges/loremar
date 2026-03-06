@@ -17,7 +17,7 @@ import {
 const styles = StyleSheet.create({
     page: {
         backgroundColor: "#ffffff",
-        padding: 50,
+        padding: 40,
         fontFamily: "Times-Roman",
         color: "#2c3e50",
     },
@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
         borderWidth: 2,
         borderColor: "#d4af37",
         borderStyle: "solid",
-        padding: 40,
+        padding: 30,
         flex: 1,
     },
     header: {
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     },
     menuDay: {
         fontFamily: "Times-Italic",
-        fontSize: 13,
+        fontSize: 15,
         color: "#888",
         textAlign: "center",
         marginBottom: 4,
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     },
     title: {
         fontFamily: "Times-Bold",
-        fontSize: 30,
+        fontSize: 32,
         color: "#b8860b",
         letterSpacing: 2,
         textAlign: "center",
@@ -51,19 +51,19 @@ const styles = StyleSheet.create({
     // Precio del menú grande y prominente
     menuPrice: {
         fontFamily: "Times-Italic",
-        fontSize: 24,
+        fontSize: 26,
         color: "#b8860b",
         textAlign: "center",
         marginTop: 4,
     },
     subtitle: {
         fontFamily: "Times-Italic",
-        fontSize: 14,
+        fontSize: 16,
         color: "#7f8c8d",
         textAlign: "center",
     },
     ornament: {
-        fontSize: 16,
+        fontSize: 18,
         color: "#d4af37",
         textAlign: "center",
         marginVertical: 12,
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
     },
     sectionTitle: {
         fontFamily: "Times-Bold",
-        fontSize: 13,
+        fontSize: 15,
         color: "#2c3e50",
         textAlign: "center",
         marginTop: 18,
@@ -95,26 +95,26 @@ const styles = StyleSheet.create({
     },
     dishName: {
         fontFamily: "Times-Roman",
-        fontSize: 13,
+        fontSize: 15,
         color: "#2c3e50",
         textAlign: "center",
     },
     dishPrice: {
         fontFamily: "Times-Italic",
-        fontSize: 13,
+        fontSize: 15,
         color: "#b8860b",
         marginLeft: 6,
     },
     dishDesc: {
         fontFamily: "Times-Italic",
-        fontSize: 11,
+        fontSize: 13,
         color: "#7f8c8d",
         textAlign: "center",
         marginTop: 2,
     },
     paragraph: {
         fontFamily: "Times-Roman",
-        fontSize: 12,
+        fontSize: 14,
         color: "#34495e",
         lineHeight: 1.6,
         textAlign: "center",
@@ -129,7 +129,7 @@ const styles = StyleSheet.create({
     },
     footerText: {
         fontFamily: "Helvetica",
-        fontSize: 9,
+        fontSize: 11,
         color: "#bdc3c7",
         textAlign: "center",
         letterSpacing: 2,
