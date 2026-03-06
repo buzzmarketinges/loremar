@@ -522,7 +522,7 @@ export default function EditMenuPage({ params }: { params: Promise<{ id: string 
                 fontFamily: "Times New Roman, serif",
                 boxSizing: "border-box"
             }}>
-                <div style={{ border: "2px solid #d4af37", padding: "15px", minHeight: "1043px" }}>
+                <div style={{ border: "2px solid #d4af37", padding: "15px", minHeight: "1043px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
                     <div style={{ textAlign: "center", marginBottom: "8px" }}>
                         {menuDay && <div style={{ fontSize: "16px", color: "#888", fontStyle: "italic", marginBottom: "5px", letterSpacing: "1px" }}>{menuDay}</div>}
                         <div style={{ fontSize: "34px", color: "#b8860b", fontWeight: "bold", letterSpacing: "2px", textTransform: "uppercase" }}>{name}</div>
@@ -537,7 +537,7 @@ export default function EditMenuPage({ params }: { params: Promise<{ id: string 
                         const content = block.content;
                         if (block.type === "HEADER") {
                             return (
-                                <div key={i} style={{ marginTop: "10px", marginBottom: "6px", textAlign: "center" }}>
+                                <div key={i} style={{ marginTop: "25px", marginBottom: "6px", textAlign: "center" }}>
                                     <div style={{ fontSize: "17px", color: "#2c3e50", fontWeight: "bold", letterSpacing: "2px", textTransform: "uppercase" }}>{content.text}</div>
                                     <div style={{ borderBottom: "1px solid #d4af37", width: "70%", margin: "5px auto 0 auto" }}></div>
                                 </div>

@@ -27,6 +27,7 @@ const styles = StyleSheet.create({
         borderStyle: "solid",
         padding: 15,
         flex: 1,
+        justifyContent: "center",
     },
     header: {
         alignItems: "center",
@@ -74,7 +75,7 @@ const styles = StyleSheet.create({
         fontSize: 15,
         color: "#2c3e50",
         textAlign: "center",
-        marginTop: 10,
+        marginTop: 25,
         marginBottom: 2,
         letterSpacing: 2,
     },
