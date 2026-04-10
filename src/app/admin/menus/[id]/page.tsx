@@ -518,18 +518,18 @@ export default function EditMenuPage({ params }: { params: Promise<{ id: string 
                 width: "794px", // A4 Width
                 backgroundColor: "#fff",
                 padding: "25px",
-                color: "#2c3e50",
-                fontFamily: "Times New Roman, serif",
+                color: "#1a1a1a",
+                fontFamily: "Arial, Helvetica, sans-serif",
                 boxSizing: "border-box"
             }}>
                 <div style={{ border: "2px solid #d4af37", padding: "15px", minHeight: "1043px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
                     <div style={{ textAlign: "center", marginBottom: "8px" }}>
-                        {menuDay && <div style={{ fontSize: "16px", color: "#888", fontStyle: "italic", marginBottom: "5px", letterSpacing: "1px" }}>{menuDay}</div>}
-                        <div style={{ fontSize: "34px", color: "#b8860b", fontWeight: "bold", letterSpacing: "2px", textTransform: "uppercase" }}>{name}</div>
+                        {menuDay && <div style={{ fontSize: "18px", color: "#555", marginBottom: "5px", letterSpacing: "1px" }}>{menuDay}</div>}
+                        <div style={{ fontSize: "42px", color: "#b8860b", fontWeight: "bold", letterSpacing: "2px", textTransform: "uppercase" }}>{name}</div>
                         {menuType === "MENU" && price ? (
-                            <div style={{ fontSize: "26px", color: "#b8860b", fontStyle: "italic", marginTop: "5px" }}>{price}€</div>
+                            <div style={{ fontSize: "32px", color: "#b8860b", fontWeight: "bold", marginTop: "5px" }}>{price}€</div>
                         ) : (
-                            <div style={{ fontSize: "18px", color: "#7f8c8d", fontStyle: "italic", marginTop: "5px" }}>Experiencia Gastronómica</div>
+                            <div style={{ fontSize: "20px", color: "#555", marginTop: "5px" }}>Experiencia Gastronómica</div>
                         )}
                     </div>
 
@@ -538,21 +538,21 @@ export default function EditMenuPage({ params }: { params: Promise<{ id: string 
                         if (block.type === "HEADER") {
                             return (
                                 <div key={i} style={{ marginTop: "25px", marginBottom: "6px", textAlign: "center" }}>
-                                    <div style={{ fontSize: "17px", color: "#2c3e50", fontWeight: "bold", letterSpacing: "2px", textTransform: "uppercase" }}>{content.text}</div>
+                                    <div style={{ fontSize: "22px", color: "#1a1a1a", fontWeight: "bold", letterSpacing: "2px", textTransform: "uppercase" }}>{content.text}</div>
                                     <div style={{ borderBottom: "1px solid #d4af37", width: "70%", margin: "5px auto 0 auto" }}></div>
                                 </div>
                             );
                         } else if (block.type === "PARAGRAPH") {
-                            return <div key={i} style={{ fontSize: "16px", color: "#34495e", textAlign: "center", margin: "4px 0", lineHeight: "1.4" }}>{content.text}</div>;
+                            return <div key={i} style={{ fontSize: "18px", color: "#222", textAlign: "center", margin: "4px 0", lineHeight: "1.4" }}>{content.text}</div>;
                         } else if (block.type === "DISH") {
                             const showPrice = menuType !== "MENU" && content.price;
                             return (
                                 <div key={i} style={{ marginBottom: "6px", textAlign: "center" }}>
                                     <div style={{ display: "flex", justifyContent: "center", alignItems: "baseline" }}>
-                                        <div style={{ fontSize: "17px", color: "#2c3e50" }}>{content.name}</div>
-                                        {showPrice && <div style={{ fontSize: "16px", color: "#b8860b", fontStyle: "italic", marginLeft: "6px" }}>{content.price}€</div>}
+                                        <div style={{ fontSize: "20px", color: "#1a1a1a", fontWeight: "bold" }}>{content.name}</div>
+                                        {showPrice && <div style={{ fontSize: "20px", color: "#b8860b", fontWeight: "bold", marginLeft: "6px" }}>{content.price}€</div>}
                                     </div>
-                                    {content.description && <div style={{ fontSize: "14px", color: "#7f8c8d", fontStyle: "italic", marginTop: "2px" }}>{content.description}</div>}
+                                    {content.description && <div style={{ fontSize: "16px", color: "#444", marginTop: "2px" }}>{content.description}</div>}
                                 </div>
                             );
                         }
