@@ -39,7 +39,7 @@ export default function Footer({ isHome = false }: { isHome?: boolean }) {
           </div>
         </div>
         <div className="footer-copyright" style={{ marginTop: "8rem", textAlign: "center", borderTop: "1px solid #111", paddingTop: "2rem", color: "#777", fontSize: "0.8rem", display: "flex", flexDirection: "column", gap: "1rem" }}>
-          <div>© {new Date().getFullYear()} Restaurante Loremar. Tradición y Excelencia.</div>
+          <div>© {new Date().getFullYear()} Restaurante Loremar · Tradición y Excelencia.</div>
           <div style={{ display: "flex", gap: "1.5rem", justifyContent: "center", fontSize: "0.75rem" }}>
             <a href="/aviso-legal" style={{ color: "inherit", textDecoration: "none" }}>Aviso Legal</a>
             <a href="/politica-de-cookies" style={{ color: "inherit", textDecoration: "none" }}>Política de Cookies</a>
