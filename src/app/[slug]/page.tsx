@@ -10,6 +10,7 @@ import { ArrowLeft } from "lucide-react";
 import DishImageModal from "@/components/DishImageModal";
 import AllergenIcon from "@/components/AllergenIcon";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 const CATEGORIES = [
     "Tapas", "Carnes", "Pescados", "Arroces", "Postres"
@@ -300,6 +301,8 @@ export default async function MenuPage({
             <div style={{ width: "100%", paddingBottom: "2rem" }}>
                 <AllergensLegend />
             </div>
+
+            <Footer isHome={false} />
 
             {/* Bottom Sticky reservation button */}
             <div style={{
