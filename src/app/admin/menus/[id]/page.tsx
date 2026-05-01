@@ -20,7 +20,7 @@ const ALLERGENS = [
 ];
 
 const CATEGORIES = [
-    "Tapas", "Carnes", "Pescados", "Arroces", "Postres"
+    "Entrantes", "Tapas", "Carnes", "Pescados", "Arroces", "Postres"
 ];
 
 export default function EditMenuPage({ params }: { params: Promise<{ id: string }> }) {
@@ -334,7 +334,7 @@ export default function EditMenuPage({ params }: { params: Promise<{ id: string 
                                 <input
                                     type="text"
                                     value={slug}
-                                    onChange={e => setSlug(e.target.value)}
+                                    onChange={e => setSlug(e.target.value.toLowerCase().replace(/\s+/g, "-"))}
                                     style={{ width: "100%", padding: "0.8rem", borderRadius: "4px", backgroundColor: "var(--background)", border: "1px solid var(--border)", color: "#aaa", fontSize: "0.9rem" }}
                                 />
                             </div>

@@ -13,7 +13,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 const CATEGORIES = [
-    "Tapas", "Carnes", "Pescados", "Arroces", "Postres"
+    "Entrantes", "Tapas", "Carnes", "Pescados", "Arroces", "Postres"
 ];
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
