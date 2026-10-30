@@ -65,7 +65,7 @@ export default async function MenuPage({
     if (!menu) return notFound();
 
     const allImages = await prisma.image.findMany();
-    const reservationUrl = "https://reservas.restaurantloremar.com/";
+    const reservationUrl = "https://www.google.com/maps/reserve/v/dine/c/Kj4qwjSt9O4";
 
     // Pre-process blocks for filtering if it's CARTA
     let filteredBlocks = menu.blocks;
@@ -319,6 +319,7 @@ export default async function MenuPage({
                 <a
                     href={reservationUrl}
                     target="_blank"
+                    rel="noopener noreferrer"
                     style={{
                         display: "block",
                         width: "100%",

@@ -81,8 +81,9 @@ export default function Navbar({ centerContent }: NavbarProps) {
                     <Link href="/#cartas" className="nav-link">Nuestros Menús</Link>
                 )}
                 <a
-                    href="https://reservas.restaurantloremar.com/"
+                    href="https://www.google.com/maps/reserve/v/dine/c/Kj4qwjSt9O4"
                     target="_blank"
+                    rel="noopener noreferrer"
                     style={{
                         backgroundColor: "var(--gold)",
                         color: "#000",
@@ -141,8 +142,9 @@ export default function Navbar({ centerContent }: NavbarProps) {
                 <a href="/#galeria" onClick={closeMenu} className="nav-link-mobile">Galería</a>
                 <a href="/#ubicacion" onClick={closeMenu} className="nav-link-mobile">Localización</a>
                 <a
-                    href="https://reservas.restaurantloremar.com/"
+                    href="https://www.google.com/maps/reserve/v/dine/c/Kj4qwjSt9O4"
                     target="_blank"
+                    rel="noopener noreferrer"
                     onClick={closeMenu}
                     style={{
                         backgroundColor: "var(--gold)",

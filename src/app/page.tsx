@@ -120,7 +120,7 @@ export default async function Home() {
               letterSpacing: "1px",
               textDecoration: "none"
             }} className="secondary-btn">VER MENÚ</a>
-            <a href="https://reservas.restaurantloremar.com/" target="_blank" style={{
+            <a href="https://www.google.com/maps/reserve/v/dine/c/Kj4qwjSt9O4" target="_blank" rel="noopener noreferrer" style={{
               backgroundColor: "var(--gold)",
               color: "#000",
               padding: "1rem 2.5rem",
